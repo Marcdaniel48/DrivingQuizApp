@@ -11,5 +11,23 @@
     <string name="pastScoresHeader"><b>Past Scores</b></string>
     <string name="pastScoresTextViewHint">-Results of previous quiz attempts go here-</string>
 
+    <string name="hint">"Hint"</string>
+    <string name="next">"Next"</string>
+    <string name="playagain">"Play Again?"</string>
+    <string name="question_0_WindroadAhead">"Winding road ahead"</string>
+    <string name="question_1_righLaneAhead">"Right lane ends ahead"</string>
+    <string name="question_2_TAhead">"T-intersection ahead"</string>
+    <string name="question_3_Bumpy_ahead">"Bumpy road ahead"</string>
+    <string name="question_4_Traffic_Lights">"Warns of traffic lights ahead"</string>
+    <string name="question_5_Children_Crossing">"School Children Crossing"</string>
+    <string name="question_6_Wild_Animals">"Warning of wild animals in the vicinity"</string>
+    <string name="question_7_Snowmobile">"Snowmobile crossing ahead"</string>
+    <string name="question_8_Roundabound_ahead">"Roundabound ahead"</string>
+    <string name="question_9_Water_Road">"Maybe Water flowing over the road"</string>
+    <string name="question_10_Stop_Sign_ahead">"Stop sign ahead. Slow down"</string>
+    <string name="question_11_School_Bus_ahead">"School Bus ahead"</string>
+    <string name="question_12_Divided_roadway">"End of a divided roadway"</string>
+    <string name="question_13_reverse_curve_ahead">"Reverse curve ahead"</string>
+    <string name="question_14_traffic_merges_lane">"Traffic may merges into the lane"</string>
 
 </resources>
