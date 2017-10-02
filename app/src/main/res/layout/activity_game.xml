@@ -50,6 +50,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/resultTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_horizontal"
+                android:text="TEST"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical">
 
@@ -119,11 +137,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/questionTextView"
-                android:layout_width="256dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -131,23 +150,15 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp" />
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <TextView
-                android:id="@+id/resultTextView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="sans-serif-smallcaps"
-                android:gravity="center_horizontal"
-                android:text="TEST"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
+                android:id="@+id/hintTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/hint_string"
+                android:visibility="invisible"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -186,6 +197,7 @@
                 android:id="@+id/hintButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="showHint"
                 android:text="@string/hint" />
 
         </LinearLayout>
