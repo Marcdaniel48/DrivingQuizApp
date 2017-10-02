@@ -18,6 +18,8 @@ public class GameActivity extends AppCompatActivity {
     TextView progressTextView;
     TextView scoreTextView;
     TextView questionTextView;
+    //Added by Marc
+    TextView hintTextView;
     TextView resultTextView;
 
     ImageButton button0;
@@ -31,6 +33,8 @@ public class GameActivity extends AppCompatActivity {
 
     ArrayList<Integer> answers = new ArrayList<Integer>();
     String[] questionsArray = new String[14];
+    //Added by Marc
+    String[] hintsArray = new String[14];
     private int[] images;
     private int[] happyFaces;
     int locationOfCorrectImage;
@@ -47,6 +51,8 @@ public class GameActivity extends AppCompatActivity {
 
         //Questions Array from Resource folder
         questionsArray = getResources().getStringArray(R.array.questions_array);
+        // Added by Marc
+        hintsArray = getResources().getStringArray(R.array.hint_array);
 
         //Traffic Signs Images Array Id from Resource Folder
         images = new int[]{R.drawable.pic_0, R.drawable.pic_1, R.drawable.pic_2,
@@ -67,9 +73,13 @@ public class GameActivity extends AppCompatActivity {
         progressTextView = (TextView)findViewById(R.id.progressTextView);
         resultTextView = (TextView)findViewById(R.id.resultTextView);
         questionTextView = (TextView)findViewById(R.id.questionTextView);
+        //Added by Marc
+        hintTextView = (TextView)findViewById(R.id.hintTextView);
         scoreTextView = (TextView)findViewById(R.id.scoreTextView);
         playAgainButton = (Button)findViewById(R.id.playAgainButton);
         //gameRelativeLayout = (RelativeLayout)findViewById(R.id.gameRelativeLayout);
+
+        createNextQuestion();
 
     }
     public void playAgain(View view) {
@@ -104,8 +114,13 @@ public class GameActivity extends AppCompatActivity {
         Random rand = new Random();
 
         int questionPos = rand.nextInt(14);
+
         String question = questionsArray[questionPos];
         questionTextView.setText(question);
+        // Added by Marc
+        hintTextView.setText(hintsArray[questionPos]);
+        hintTextView.setVisibility(View.INVISIBLE);
+
         locationOfCorrectImage = rand.nextInt(4);
 
         for (int i=0; i<4; i++) {
@@ -193,5 +208,10 @@ public class GameActivity extends AppCompatActivity {
     public void start(View view) {
         super.onStart();
         playAgain();
+    }
+
+    public void showHint(View v)
+    {
+        hintTextView.setVisibility(View.VISIBLE);
     }
 }
