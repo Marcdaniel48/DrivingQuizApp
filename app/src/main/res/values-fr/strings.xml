@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">assign1-team02</string>
+    <string name="creditsTextViewHint">Cette application de quiz de conduite a été créée par Daniel et Marc.</string>
+    <string name="hint">Indice</string>
+    <string name="howToPlayHeader"><b>Comment Jouer</b></string>
+    <string name="howToPlayTextViewHint">Le but de cette application est de fournir un quiz interactif de conduite. Lorsque le quiz commence, 4 images différents et une courte phrase, décrivant une de ces images, apparaîtront. Le but est de trouver à quelle image cette phrase réfère à, en cliquant\nsur la photo correcte.</string>
+    <string name="pastScoresHeader"><b>Résultats passés</b></string>
+    <string name="next">Suivant</string>
+    <string name="pastScoresTextViewHint">-Résultats des tentatives de quiz précédentes vont ici-</string>
+    <string name="playQuizButtonHint">Jouer Le Quiz</string>
+    <string name="playagain">\"Rejouer?\"</string>
+    <string name="question_0_WindroadAhead">Proximité d\'une ou plusieurs courbes sur un chemin public</string>
+    <string name="question_10_Stop_Sign_ahead">Proximité d\'un panneau d\'arrêt</string>
+    <string name="question_11_School_Bus_ahead">Proximité d\'un autobus scolaire immobilisé</string>
+    <string name="question_12_Divided_roadway">Proximité du début ou de la fin d\'une chausssée séparée</string>
+    <string name="question_13_reverse_curve_ahead">Proximité d\'une ou de plusieurs courbes sur un chemin public</string>
+    <string name="question_14_traffic_merges_lane">La route fait une courbe gauche</string>
+    <string name="question_1_righLaneAhead">Le nombre de voies dans le mème sens de circulation est réduit</string>
+    <string name="question_2_TAhead">Indication que sur un chemin public, l\'approche d\'un point où ce dernier en croise un autre</string>
+    <string name="question_3_Bumpy_ahead">Près d\'une bosse de vitesse</string>
+    <string name="question_4_Traffic_Lights">Proximité de feux de circulation à une intersection.</string>
+    <string name="question_5_Children_Crossing">Zone scolaire</string>
+    <string name="question_6_Wild_Animals">Présense potentielle d\'animaux sauvages</string>
+    <string name="question_7_Snowmobile">Présense potentielle d\'un motoneige</string>
+    <string name="question_8_Roundabound_ahead">Indication que sur un chemin public, l\'approche d\'un point où ce dernier en croise un autre</string>
+    <string name="question_9_Water_Road">Chemin est recouvert d\'eau à certains endroits</string>
+    <string name="question_0_hint">La route a beaucoup de courbes</string>
+    <string name="question_10_hint">Préparez-vous à arrêter</string>
+    <string name="question_11_hint">Grande véhicule jaune qui amène les enfants à l\'école</string>
+    <string name="question_12_hint">Un obstacle ne coupe plus le milieu de la route</string>
+    <string name="question_13_hint">La route fait une courbe gauche</string>
+    <string name="question_1_hint">La voie est sure le point de fusionner avec une autre voie</string>
+    <string name="question_14_hint">Deux voies deviennent une</string>
+    <string name="question_2_hint">Vos seules options sont de tourner à gauche ou à droite</string>
+    <string name="question_3_hint">Il y a une bosse de vitesse entrant. Ralentissez ou vous sauterez</string>
+    <string name="question_4_hint">Rouge, Jaune, Vert</string>
+    <string name="question_5_hint">Attention aux gens</string>
+    <string name="question_6_hint">Faites attention au cerf</string>
+    <string name="question_7_hint">Véhicule pour la neige</string>
+    <string name="question_8_hint">Rotation 360</string>
+    <string name="question_9_hint">Inondation</string>
+    <string name="aboutButtonHint">À propos</string>
+    <string name="creditsHeader"><b>Crédits</b></string>
+</resources>
