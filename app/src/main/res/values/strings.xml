@@ -1,3 +1,55 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">assign1-team02</string>
+    <string name="playQuizButtonHint">Play Quiz</string>
+    <string name="aboutButtonHint">About</string>
+
+    <string name="howToPlayHeader"><b>How To Play</b></string>
+    <string name="howToPlayTextViewHint">This is a driving quiz application. When the quiz starts, 4 different images will appear alongside a short sentence
+    describing one of those images. The goal is to find which image the sentence is referring to by clicking on the correct picture.</string>
+    <string name="creditsHeader"><b>Credits</b></string>
+    <string name="creditsTextViewHint">This driving quiz application was created by Daniel and Marc.</string>
+    <string name="pastScoresHeader"><b>Past Scores</b></string>
+    <string name="pastScoresTextViewHint">-Results of previous quiz attempts go here-</string>
+
+    <string name="hint">Hint</string>
+    <string name="next">Next</string>
+    <string name="playagain">"Play Again?"</string>
+    <string name="question_0_WindroadAhead">Winding road ahead</string>
+    <string name="question_0_hint">The road curves a lot.</string>
+    <string name="question_1_righLaneAhead">Right lane ends ahead</string>
+    <string name="question_1_hint">The lane is about to merge with another lane.</string>
+    <string name="question_2_TAhead">T-intersection ahead</string>
+    <string name="question_2_hint">Your only options are to turn left or right.</string>
+    <string name="question_3_Bumpy_ahead">Bumpy road ahead</string>
+    <string name="question_3_hint">"There is a speed bump incoming. Slow down or you'll jump."</string>
+    <string name="question_4_Traffic_Lights">Warns of traffic lights ahead</string>
+    <string name="question_4_hint">Red, Yellow, Green</string>
+    <string name="question_5_Children_Crossing">"School Children Crossing"</string>
+    <string name="question_5_hint">Watch out for people.</string>
+    <string name="question_6_Wild_Animals">"Warning of wild animals in the vicinity"</string>
+    <string name="question_6_hint">Watch out for the deer.</string>
+    <string name="question_7_Snowmobile">"Snowmobile crossing ahead"</string>
+    <string name="question_7_hint">Snow vehicle</string>
+    <string name="question_8_Roundabound_ahead">"Roundabound ahead"</string>
+    <string name="question_8_hint">360 rotation</string>
+    <string name="question_9_Water_Road">"Maybe Water flowing over the road"</string>
+    <string name="question_9_hint">Flooding</string>
+    <string name="question_10_Stop_Sign_ahead">"Stop sign ahead. Slow down"</string>
+    <string name="question_10_hint">Get read to stop.</string>
+    <string name="question_11_School_Bus_ahead">"School Bus ahead"</string>
+    <string name="question_11_hint">Large yellow vehicle that brings children to school</string>
+    <string name="question_12_Divided_roadway">"End of a divided roadway"</string>
+    <string name="question_12_hint">An obstacle no longer cuts the middle of the road.</string>
+    <string name="question_13_reverse_curve_ahead">"Reverse curve ahead"</string>
+    <string name="question_13_hint">The road curves left</string>
+    <string name="question_14_traffic_merges_lane">"Traffic may merges into the lane"</string>
+    <string name="question_14_hint">Two lanes become one.</string>
+    <string name="hint_string"></string>
+
+    <string name="correct">Correct!</string>
+    <string name="correct_finish">Correct!Test Finished!</string>
+    <string name="wrong">Wrong!</string>
+    <string name="wrong_tryagain">Wrong! Try One More Time!</string>
+    <string name="wrong_finished">Wrong! Test Finished</string>
+
 </resources>

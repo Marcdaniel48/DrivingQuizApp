@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="questions_array">
+        <item>@string/question_0_WindroadAhead</item>
+        <item>@string/question_1_righLaneAhead</item>
+        <item>@string/question_2_TAhead</item>
+        <item>@string/question_3_Bumpy_ahead</item>
+        <item>@string/question_4_Traffic_Lights</item>
+        <item>@string/question_5_Children_Crossing</item>
+        <item>@string/question_6_Wild_Animals</item>
+        <item>@string/question_7_Snowmobile</item>
+        <item>@string/question_8_Roundabound_ahead</item>
+        <item>@string/question_9_Water_Road</item>
+        <item>@string/question_10_Stop_Sign_ahead</item>
+        <item>@string/question_11_School_Bus_ahead</item>
+        <item>@string/question_12_Divided_roadway</item>
+        <item>@string/question_13_reverse_curve_ahead</item>
+        <item>@string/question_14_traffic_merges_lane</item>
+    </string-array>
+    <string-array name="hint_array">
+        <item>@string/question_0_hint</item>
+        <item>@string/question_1_hint</item>
+        <item>@string/question_2_hint</item>
+        <item>@string/question_3_hint</item>
+        <item>@string/question_4_hint</item>
+        <item>@string/question_5_hint</item>
+        <item>@string/question_6_hint</item>
+        <item>@string/question_7_hint</item>
+        <item>@string/question_8_hint</item>
+        <item>@string/question_9_hint</item>
+        <item>@string/question_10_hint</item>
+        <item>@string/question_11_hint</item>
+        <item>@string/question_12_hint</item>
+        <item>@string/question_13_hint</item>
+        <item>@string/question_14_hint</item>
+    </string-array>
+</resources>
