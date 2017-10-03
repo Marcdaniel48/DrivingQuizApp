@@ -46,4 +46,10 @@
     <string name="question_14_hint">Two lanes become one.</string>
     <string name="hint_string"></string>
 
+    <string name="correct">Correct!</string>
+    <string name="correct_finish">Correct!Test Finished!</string>
+    <string name="wrong">Wrong!</string>
+    <string name="wrong_tryagain">Wrong! Try One More Time!</string>
+    <string name="wrong_finished">Wrong! Test Finished</string>
+
 </resources>

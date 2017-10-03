@@ -1,12 +1,12 @@
 package cs.dawson.myapplication;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class GameActivity extends AppCompatActivity {
     Button nextButton;
 
     Button playAgainButton;
-    RelativeLayout gameRelativeLayout;
+    //RelativeLayout gameRelativeLayout;
 
     ArrayList<Integer> answers = new ArrayList<Integer>();
     String[] questionsArray = new String[14];
@@ -43,6 +43,9 @@ public class GameActivity extends AppCompatActivity {
     int chances = 0;
     int numberOfQuestions = 0;
     int previousNumber = -1;
+
+    String question;
+    int questionPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +68,10 @@ public class GameActivity extends AppCompatActivity {
         happyFaces = new int[]{R.drawable.happyface_1,R.drawable.happyface_2,
                 R.drawable.happyface_3,R.drawable.happyface_4,};
 
+        SharedPreferences prefis = getPreferences(MODE_PRIVATE);
+
+
+
         button0 = (ImageButton)findViewById(R.id.button0);
         button1 = (ImageButton)findViewById(R.id.button1);
         button2 = (ImageButton)findViewById(R.id.button2);
@@ -82,11 +89,18 @@ public class GameActivity extends AppCompatActivity {
         createNextQuestion();
 
     }
-    public void playAgain(View view) {
 
-        playAgain();
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences prefis = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefis.edit();
+        editor.putString("question", question);
+        editor.putInt("questionPos", questionPos);
 
+        editor.commit();
     }
+
     public void playAgain() {
 
         score = 0;
@@ -145,6 +159,14 @@ public class GameActivity extends AppCompatActivity {
     public void nextQuestion(View view){
         createNextQuestion();
     }
+
+    public void reconstruct(){
+
+
+    }
+
+
+
     public void changeFaces(){
 
         button0.setImageResource(happyFaces[0]);
@@ -172,7 +194,7 @@ public class GameActivity extends AppCompatActivity {
         if (view.getTag().toString().equals(Integer.toString(locationOfCorrectImage))) {
             score++;
             questions++;
-            resultTextView.setText("Correct!");
+            resultTextView.setText(R.string.correct);
             //resultTextView.setBackgroundResource(R.color.colorGreen);
             resultTextView.setTextColor(Color.GREEN);
             changeFaces();
@@ -180,7 +202,7 @@ public class GameActivity extends AppCompatActivity {
             scoreTextView.setText("Score:" + Integer.toString(score));
             progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
             if(questions == 4){
-                resultTextView.setText("Correct!Test Finished!");
+                resultTextView.setText(R.string.correct_finish);
             }else{
                 nextButton.setClickable(true);
             }
@@ -188,14 +210,14 @@ public class GameActivity extends AppCompatActivity {
 
         } else {
             chances++;
-            resultTextView.setText("Wrong! Try One More Time!");
+            resultTextView.setText(R.string.wrong_tryagain);
             resultTextView.setBackgroundResource(R.color.colorRed);
             if(chances > 1){
-                resultTextView.setText("Wrong!");
+                resultTextView.setText(R.string.wrong);
                 disableButtons();
                 progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
                 if(questions == 4){
-                    resultTextView.setText("Wrong!Test Finished!");
+                    resultTextView.setText(R.string.wrong_finished);
                 }else{
                     nextButton.setClickable(true);
                 }
@@ -203,11 +225,6 @@ public class GameActivity extends AppCompatActivity {
                 nextButton.setClickable(false);
             }
         }
-    }
-
-    public void start(View view) {
-        super.onStart();
-        playAgain();
     }
 
     public void showHint(View v)
