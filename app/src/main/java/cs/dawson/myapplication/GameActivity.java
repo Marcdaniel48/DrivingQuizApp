@@ -1,5 +1,7 @@
 package cs.dawson.myapplication;
 
+import android.app.SearchManager;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -382,6 +384,9 @@ public class GameActivity extends AppCompatActivity {
 
     public void showHint(View v)
     {
-        hintButton.setText(hint);
+        String query = questionTextView.getText().toString();
+        Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+        intent.putExtra(SearchManager.QUERY, query);
+        startActivity(intent);
     }
 }
