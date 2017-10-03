@@ -160,7 +160,8 @@
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:onClick="playAgain"
-            android:text="@string/playagain" />
+            android:text="@string/playagain"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/nextButton"
@@ -169,7 +170,8 @@
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:onClick="nextButton"
-            android:text="@string/next" />
+            android:text="@string/next"
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -185,7 +187,8 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:onClick="showHint"
-            android:text="@string/hint" />
+            android:text="@string/hint"
+            android:textSize="24sp" />
 
     </LinearLayout>
 
