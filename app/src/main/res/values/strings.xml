@@ -19,7 +19,7 @@
     <string name="question_1_righLaneAhead">Right lane ends ahead</string>
     <string name="question_1_hint">The lane is about to merge with another lane.</string>
     <string name="question_2_TAhead">T-intersection ahead</string>
-    <string name="question_2_hint">Eventually, your only options are to turn left or right.</string>
+    <string name="question_2_hint">Your only options are to turn left or right.</string>
     <string name="question_3_Bumpy_ahead">Bumpy road ahead</string>
     <string name="question_3_hint">"There is a speed bump incoming. Slow down or you'll jump."</string>
     <string name="question_4_Traffic_Lights">Warns of traffic lights ahead</string>
@@ -33,7 +33,7 @@
     <string name="question_8_Roundabound_ahead">"Roundabound ahead"</string>
     <string name="question_8_hint">360 rotation</string>
     <string name="question_9_Water_Road">"Maybe Water flowing over the road"</string>
-    <string name="question_9_hint">Floading</string>
+    <string name="question_9_hint">Flooding</string>
     <string name="question_10_Stop_Sign_ahead">"Stop sign ahead. Slow down"</string>
     <string name="question_10_hint">Get read to stop.</string>
     <string name="question_11_School_Bus_ahead">"School Bus ahead"</string>
