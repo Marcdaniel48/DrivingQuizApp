@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/howToPlayHeader"
                     android:textColor="@color/textColor"
-                    android:textSize="24dp" />
+                    android:textSize="38dp" />
 
                 <TextView
                     android:id="@+id/textView2"
@@ -44,7 +44,7 @@
                     android:layout_weight="1"
                     android:text="@string/howToPlayTextViewHint"
                     android:textColor="@color/textColor"
-                    android:textSize="16dp" />
+                    android:textSize="26dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -58,7 +58,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/pastScoresHeader"
                         android:textColor="@color/textColor"
-                        android:textSize="24dp" />
+                        android:textSize="38dp" />
 
                     <TextView
                         android:id="@+id/textView6"
@@ -66,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/pastScoresTextViewHint"
                         android:textColor="@color/textColor"
-                        android:textSize="18dp" />
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/creditsHeader"
                     android:textColor="@color/textColor"
-                    android:textSize="24dp" />
+                    android:textSize="38dp" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/creditsTextViewHint"
                     android:textColor="@color/textColor"
-                    android:textSize="16dp" />
+                    android:textSize="26dp" />
 
             </LinearLayout>
 

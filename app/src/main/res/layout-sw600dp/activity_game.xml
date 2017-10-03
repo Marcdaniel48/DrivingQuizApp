@@ -7,29 +7,30 @@
     android:background="#404040"
     android:orientation="vertical"
     tools:context="cs.dawson.myapplication.GameActivity"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="3dp">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/progressTextView"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@color/colorWhite"
             android:padding="10dp"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/scoreTextView"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@color/colorWhite"
             android:padding="10dp"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -46,13 +47,13 @@
             android:gravity="center_horizontal"
             android:text="TEST"
             android:textColor="@android:color/black"
-            android:textSize="24sp" />
+            android:textSize="32sp" />
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
@@ -61,9 +62,9 @@
 
         <ImageButton
             android:id="@+id/button0"
-            android:layout_width="115dp"
-            android:layout_height="115dp"
-            android:layout_marginRight="5dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginRight="10dp"
             android:background="@null"
             android:onClick="chooseAnswer"
             android:scaleType="fitXY"
@@ -72,14 +73,15 @@
 
         <ImageButton
             android:id="@+id/button1"
-            android:layout_width="115dp"
-            android:layout_height="115dp"
-            android:layout_marginLeft="5dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="10dp"
             android:background="@null"
             android:onClick="chooseAnswer"
             android:scaleType="fitXY"
             android:tag="1"
             app:srcCompat="@drawable/pic_3" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -90,9 +92,9 @@
 
         <ImageButton
             android:id="@+id/button2"
-            android:layout_width="115dp"
-            android:layout_height="115dp"
-            android:layout_marginRight="5dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginRight="10dp"
             android:background="@null"
             android:onClick="chooseAnswer"
             android:scaleType="fitXY"
@@ -101,9 +103,9 @@
 
         <ImageButton
             android:id="@+id/button3"
-            android:layout_width="115dp"
-            android:layout_height="115dp"
-            android:layout_marginLeft="5dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="10dp"
             android:background="@null"
             android:onClick="chooseAnswer"
             android:scaleType="fitXY"
@@ -117,17 +119,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/questionTextView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/question_1_righLaneAhead"
             android:textColor="@color/colorWhite"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/hintTextView"
@@ -136,7 +140,7 @@
             android:layout_weight="1"
             android:text="@string/hint_string"
             android:textColor="@color/colorWhite"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:visibility="invisible" />
 
 
@@ -144,14 +148,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.19"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/playAgainButton"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="2dp"
+            android:layout_height="75dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:onClick="playAgain"
             android:text="@string/playagain" />
@@ -159,21 +164,25 @@
         <Button
             android:id="@+id/nextButton"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
+            android:layout_height="75dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:onClick="playAgain"
             android:text="@string/next" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:weightSum="1">
 
         <Button
             android:id="@+id/hintButton"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
             android:onClick="showHint"
             android:text="@string/hint" />
 
