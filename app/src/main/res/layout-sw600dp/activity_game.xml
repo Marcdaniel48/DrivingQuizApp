@@ -20,16 +20,18 @@
             android:id="@+id/progressTextView"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
+            android:background="@null"
             android:padding="10dp"
+            android:textColor="@color/colorWhite"
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/scoreTextView"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
+            android:background="@null"
             android:padding="10dp"
+            android:textColor="@color/colorWhite"
             android:textSize="24sp" />
 
     </LinearLayout>
@@ -45,7 +47,6 @@
             android:layout_height="match_parent"
             android:fontFamily="sans-serif-smallcaps"
             android:gravity="center_horizontal"
-            android:text="TEST"
             android:textColor="@android:color/black"
             android:textSize="32sp" />
 
@@ -131,7 +132,7 @@
             android:gravity="center"
             android:text="@string/question_1_righLaneAhead"
             android:textColor="@color/colorWhite"
-            android:textSize="24sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/hintTextView"
@@ -167,7 +168,7 @@
             android:layout_height="75dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:onClick="playAgain"
+            android:onClick="nextButton"
             android:text="@string/next" />
 
     </LinearLayout>
