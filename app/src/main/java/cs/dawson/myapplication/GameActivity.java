@@ -53,6 +53,7 @@ public class GameActivity extends AppCompatActivity {
     //Variables to control the flow of the game
     boolean disable = false;
     boolean disableNextButton = false;
+    boolean disablePlayAgainButton = true;
     String question;
     int questionPos;
     String hint;
@@ -113,6 +114,7 @@ public class GameActivity extends AppCompatActivity {
             chances = savedInstanceState.getInt("chances");
             disable = savedInstanceState.getBoolean("disable",false);
             disableNextButton = savedInstanceState.getBoolean("disableNextButton",true);
+            disablePlayAgainButton = savedInstanceState.getBoolean("disablePlayAgainButton",true);
             score = savedInstanceState.getInt("score");
 
             button0.setImageResource(button_0);
@@ -128,6 +130,9 @@ public class GameActivity extends AppCompatActivity {
             }
             if(disableNextButton){
                 nextButton.setClickable(false);
+            }
+            if(disablePlayAgainButton){
+                playAgainButton.setClickable(false);
             }
         }else{
             createNextQuestion();
@@ -154,6 +159,7 @@ public class GameActivity extends AppCompatActivity {
         progressTextView.setText("0/0");
         scoreTextView.setText("");
         playAgainButton.setClickable(false);
+        disablePlayAgainButton = true;
         nextButton.setClickable(false);
         disableNextButton = true;
         progressTextView.setBackground(null);
@@ -229,8 +235,10 @@ public class GameActivity extends AppCompatActivity {
         outState.putInt("questions", questions);
         outState.putBoolean("disable", disable);
         outState.putBoolean("disableNextButton", disableNextButton);
+        outState.putBoolean("disablePlayAgainButton", disablePlayAgainButton);
         outState.putInt("chances", chances);
         outState.putInt("score", score);
+
     }
 
     /**
@@ -245,6 +253,7 @@ public class GameActivity extends AppCompatActivity {
         button2.setClickable(false);
         button3.setClickable(false);
         playAgainButton.setClickable(false);
+        disablePlayAgainButton = true;
 
     }
 
@@ -305,6 +314,7 @@ public class GameActivity extends AppCompatActivity {
                 disableNextButton = true;
                 disableButtons();
                 playAgainButton.setClickable(true);
+                disablePlayAgainButton = false;
             }else{
                 nextButton.setClickable(true);
                 disableNextButton = false;
@@ -344,6 +354,7 @@ public class GameActivity extends AppCompatActivity {
                 disable = true;
                 disableButtons();
                 playAgainButton.setClickable(false);
+                disablePlayAgainButton = true;
                 questions++;
                 progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
                 if(questions == 4){
@@ -352,6 +363,7 @@ public class GameActivity extends AppCompatActivity {
                     disableNextButton = true;
                     disableButtons();
                     playAgainButton.setClickable(true);
+                    disablePlayAgainButton = false;
                 }else{
                     nextButton.setClickable(true);
                     disableNextButton = false;
@@ -361,6 +373,7 @@ public class GameActivity extends AppCompatActivity {
                 resultTextView.setText(R.string.wrong_tryagain);
                 nextButton.setClickable(false);
                 playAgainButton.setClickable(false);
+                disablePlayAgainButton = true;
                 disableNextButton = true;
                 disable = false;
             }
