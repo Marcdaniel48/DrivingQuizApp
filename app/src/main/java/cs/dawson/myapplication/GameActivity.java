@@ -27,7 +27,7 @@ public class GameActivity extends AppCompatActivity {
     ImageButton button3;
     Button nextButton;
     Button playAgainButton;
-    Button hint;
+    Button hintButton;
 
 
     ArrayList<Integer> answers = new ArrayList<Integer>();
@@ -52,8 +52,10 @@ public class GameActivity extends AppCompatActivity {
 
     //Variables to control the flow of the game
     boolean disable = false;
+    boolean disableNextButton = false;
     String question;
     int questionPos;
+    String hint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +90,7 @@ public class GameActivity extends AppCompatActivity {
         //main buttons of the game
         nextButton = (Button)findViewById(R.id.nextButton);
         playAgainButton = (Button)findViewById(R.id.playAgainButton);
-        hint = (Button)findViewById(R.id.hintButton);
+        hintButton = (Button)findViewById(R.id.hintButton);
 
         //Components to control the progress of the game
         progressTextView = (TextView)findViewById(R.id.progressTextView);
@@ -110,6 +112,7 @@ public class GameActivity extends AppCompatActivity {
             questionPos = savedInstanceState.getInt("questionPos");
             chances = savedInstanceState.getInt("chances");
             disable = savedInstanceState.getBoolean("disable",false);
+            disableNextButton = savedInstanceState.getBoolean("disableNextButton",true);
             score = savedInstanceState.getInt("score");
 
             button0.setImageResource(button_0);
@@ -122,6 +125,9 @@ public class GameActivity extends AppCompatActivity {
 
             if(disable){
                 disableButtons();
+            }
+            if(disableNextButton){
+                nextButton.setClickable(false);
             }
         }else{
             createNextQuestion();
@@ -149,6 +155,7 @@ public class GameActivity extends AppCompatActivity {
         scoreTextView.setText("");
         playAgainButton.setClickable(false);
         nextButton.setClickable(false);
+        disableNextButton = true;
         progressTextView.setBackground(null);
         progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
         scoreTextView.setText("Score: " + Integer.toString(score));
@@ -163,11 +170,13 @@ public class GameActivity extends AppCompatActivity {
     public void createNextQuestion() {
         scoreTextView.setText("Score:" + Integer.toString(score));
         progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
+        hintButton.setText(R.string.hint);
         chances = 0;
         int incorrectAnswer;
         previousNumber = -1;
         answers.clear();
         nextButton.setClickable(false);
+        disableNextButton = true;
         resultTextView.setText("");
 
         //Create a random object
@@ -177,8 +186,9 @@ public class GameActivity extends AppCompatActivity {
 
         question = questionsArray[questionPos];
         questionTextView.setText(question);
-        hintTextView.setText(hintsArray[questionPos]);
-        hintTextView.setVisibility(View.INVISIBLE);
+        hint = hintsArray[questionPos];
+        //hintTextView.setText(hintsArray[questionPos]);
+        //hintTextView.setVisibility(View.INVISIBLE);
 
         locationOfCorrectImage = rand.nextInt(4);
         for (int i=0; i<4; i++) {
@@ -215,8 +225,10 @@ public class GameActivity extends AppCompatActivity {
         outState.putInt("button_3",button_3);
         outState.putInt("questionPos", questionPos);
         outState.putString("question", question);
+        outState.putString("hint", hint);
         outState.putInt("questions", questions);
         outState.putBoolean("disable", disable);
+        outState.putBoolean("disableNextButton", disableNextButton);
         outState.putInt("chances", chances);
         outState.putInt("score", score);
     }
@@ -259,7 +271,6 @@ public class GameActivity extends AppCompatActivity {
         Random rand = new Random();
         if (view.getTag().toString().equals(Integer.toString(locationOfCorrectImage))) {
             score++;
-            questions++;
             resultTextView.setTextColor(Color.GREEN);
             resultTextView.setText(R.string.correct);
             int happyFace = rand.nextInt(3);
@@ -285,14 +296,18 @@ public class GameActivity extends AppCompatActivity {
             }
             disable = true;
             disableButtons();
+            questions++;
             scoreTextView.setText("Score:" + Integer.toString(score));
             progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
             if(questions == 4){
                 resultTextView.setText(R.string.correct_finish);
                 nextButton.setClickable(false);
+                disableNextButton = true;
+                disableButtons();
                 playAgainButton.setClickable(true);
             }else{
                 nextButton.setClickable(true);
+                disableNextButton = false;
             }
 
 
@@ -303,18 +318,22 @@ public class GameActivity extends AppCompatActivity {
                 case "0":
                     button_0 = sadFaces[sadFace];
                     button0.setImageResource(button_0);
+                    button0.setClickable(false);
                     break;
                 case "1":
                     button_1 = sadFaces[sadFace];
                     button1.setImageResource(button_1);
+                    button1.setClickable(false);
                     break;
                 case "2":
                     button_2 = sadFaces[sadFace];
                     button2.setImageResource(button_2);
+                    button2.setClickable(false);
                     break;
                 case "3":
                     button_3 = sadFaces[sadFace];
                     button3.setImageResource(button_3);
+                    button3.setClickable(false);
                     break;
                 default:
                     break;
@@ -324,18 +343,25 @@ public class GameActivity extends AppCompatActivity {
                 resultTextView.setText(R.string.wrong);
                 disable = true;
                 disableButtons();
+                playAgainButton.setClickable(false);
+                questions++;
                 progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
                 if(questions == 4){
                     resultTextView.setText(R.string.wrong_finished);
                     nextButton.setClickable(false);
+                    disableNextButton = true;
+                    disableButtons();
                     playAgainButton.setClickable(true);
                 }else{
                     nextButton.setClickable(true);
+                    disableNextButton = false;
                 }
             }else{
                 resultTextView.setTextColor(Color.RED);
                 resultTextView.setText(R.string.wrong_tryagain);
                 nextButton.setClickable(false);
+                playAgainButton.setClickable(false);
+                disableNextButton = true;
                 disable = false;
             }
         }
@@ -343,6 +369,6 @@ public class GameActivity extends AppCompatActivity {
 
     public void showHint(View v)
     {
-        hintTextView.setVisibility(View.VISIBLE);
+        hintButton.setText(hint);
     }
 }

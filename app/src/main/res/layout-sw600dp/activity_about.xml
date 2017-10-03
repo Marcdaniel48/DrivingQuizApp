@@ -3,19 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="#404040"
     android:padding="5dp">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/menubackground"
-            android:alpha="0.5"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,10 +54,16 @@
                         android:textSize="38dp" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/resultScore1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/pastScoresTextViewHint"
+                        android:textColor="@color/textColor"
+                        android:textSize="26dp" />
+
+                    <TextView
+                        android:id="@+id/resultScore2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:textColor="@color/textColor"
                         android:textSize="26dp" />
 
@@ -96,6 +95,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
 
     </FrameLayout>
 

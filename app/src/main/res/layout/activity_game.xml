@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:padding="10dp"
-            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 
         <TextView
@@ -30,7 +29,6 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:padding="10dp"
-            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -163,7 +161,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
             android:layout_weight="1"
-            android:onClick="nextButton"
+            android:onClick="playAgain"
             android:text="@string/next" />
     </LinearLayout>
 
