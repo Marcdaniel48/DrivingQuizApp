@@ -41,6 +41,8 @@ public class GameActivity extends AppCompatActivity {
     private int[] sadFaces;
     int locationOfCorrectImage;
     int score = 0;
+    int correctAnswers = 0;
+    int incorrectAnswers = 0;
     int questions = 0;
     int chances = 0;
     int numberOfQuestions = 0;
@@ -117,6 +119,8 @@ public class GameActivity extends AppCompatActivity {
             disable = savedInstanceState.getBoolean("disable",false);
             disableNextButton = savedInstanceState.getBoolean("disableNextButton",true);
             disablePlayAgainButton = savedInstanceState.getBoolean("disablePlayAgainButton",true);
+            correctAnswers = savedInstanceState.getInt("correctAnswers");
+            incorrectAnswers = savedInstanceState.getInt("incorrectAnswers");
             score = savedInstanceState.getInt("score");
 
             button0.setImageResource(button_0);
@@ -124,7 +128,7 @@ public class GameActivity extends AppCompatActivity {
             button2.setImageResource(button_2);
             button3.setImageResource(button_3);
             questionTextView.setText(question);
-            scoreTextView.setText("Score:" + Integer.toString(score));
+            scoreTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
             progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
 
             if(disable){
@@ -155,6 +159,8 @@ public class GameActivity extends AppCompatActivity {
      */
     public void playAgain(View view){
         score = 0;
+        incorrectAnswers = 0;
+        correctAnswers = 0;
         questions = 0;
         chances = 0;
         numberOfQuestions = 0;
@@ -166,7 +172,7 @@ public class GameActivity extends AppCompatActivity {
         disableNextButton = true;
         progressTextView.setBackground(null);
         progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
-        scoreTextView.setText("Score: " + Integer.toString(score));
+        scoreTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
         createNextQuestion();
     }
 
@@ -176,7 +182,7 @@ public class GameActivity extends AppCompatActivity {
      * and sets the images on the screen.
      */
     public void createNextQuestion() {
-        scoreTextView.setText("Score:" + Integer.toString(score));
+        scoreTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
         progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
         hintButton.setText(R.string.hint);
         chances = 0;
@@ -240,6 +246,9 @@ public class GameActivity extends AppCompatActivity {
         outState.putBoolean("disablePlayAgainButton", disablePlayAgainButton);
         outState.putInt("chances", chances);
         outState.putInt("score", score);
+        outState.putInt("correctAnswers", correctAnswers);
+        outState.putInt("incorrectAnswers", incorrectAnswers);
+
 
     }
 
@@ -282,6 +291,7 @@ public class GameActivity extends AppCompatActivity {
         Random rand = new Random();
         if (view.getTag().toString().equals(Integer.toString(locationOfCorrectImage))) {
             score++;
+            correctAnswers++;
             resultTextView.setTextColor(Color.GREEN);
             resultTextView.setText(R.string.correct);
             int happyFace = rand.nextInt(3);
@@ -308,7 +318,7 @@ public class GameActivity extends AppCompatActivity {
             disable = true;
             disableButtons();
             questions++;
-            scoreTextView.setText("Score:" + Integer.toString(score));
+            scoreTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
             progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
             if(questions == 4){
                 resultTextView.setText(R.string.correct_finish);
@@ -351,6 +361,7 @@ public class GameActivity extends AppCompatActivity {
                     break;
             }
             if(chances > 1){
+                incorrectAnswers++;
                 resultTextView.setTextColor(Color.RED);
                 resultTextView.setText(R.string.wrong);
                 disable = true;
@@ -358,6 +369,7 @@ public class GameActivity extends AppCompatActivity {
                 playAgainButton.setClickable(false);
                 disablePlayAgainButton = true;
                 questions++;
+                scoreTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
                 progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
                 if(questions == 4){
                     resultTextView.setText(R.string.wrong_finished);
