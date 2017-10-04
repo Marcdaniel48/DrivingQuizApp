@@ -103,13 +103,53 @@ public class GameActivity extends AppCompatActivity {
         scoreTextView = (TextView)findViewById(R.id.scoreTextView);
 
         //Restoring the main components of the game
-        SharedPreferences prefis = getPreferences(MODE_PRIVATE);
-        if(savedInstanceState != null){
+
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+
+
+
+        if(prefs.getInt("button_0", 0) != 0 && prefs.getInt("button_0", 0) != 0 && prefs.getInt("button_0", 0)!=0 && prefs.getInt("button_0", 0)!=0)
+        {
+            button_0 = prefs.getInt("button_0", 0);
+            button_1 = prefs.getInt("button_1", 0);
+            button_2 = prefs.getInt("button_2", 0);
+            button_3 = prefs.getInt("button_3", 0);
+            question = prefs.getString("question", null);
+            questions = prefs.getInt("questions", 0);
+            questions = prefs.getInt("questionPos", 0);
+            chances = prefs.getInt("chances", 0);
+            disable = prefs.getBoolean("disable", false);
+            disableNextButton = prefs.getBoolean("disableNextButton", false);
+            disablePlayAgainButton = prefs.getBoolean("disablePlayAgainButton", false);
+            score = prefs.getInt("score", 0);
+
+            button0.setImageResource(button_0);
+            button1.setImageResource(button_1);
+            button2.setImageResource(button_2);
+            button3.setImageResource(button_3);
+            questionTextView.setText(question);
+            scoreTextView.setText("Score:" + Integer.toString(score));
+            progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
+
+            if(disable){
+                disableButtons();
+            }
+            if(disableNextButton){
+                nextButton.setClickable(false);
+            }
+            if(disablePlayAgainButton){
+                playAgainButton.setClickable(false);
+            }
+        }
+        if(savedInstanceState != null ){
             // restore my counter
-            button_0 = savedInstanceState.getInt("button_0");
-            button_1 = savedInstanceState.getInt("button_1");
-            button_2 = savedInstanceState.getInt("button_2");
-            button_3 = savedInstanceState.getInt("button_3");
+            if(savedInstanceState.getInt("button_0")!=0 && savedInstanceState.getInt("button_1")!=0
+                    && savedInstanceState.getInt("button_2")!=0 && savedInstanceState.getInt("button_3")!=0) {
+                button_0 = savedInstanceState.getInt("button_0");
+                button_1 = savedInstanceState.getInt("button_1");
+                button_2 = savedInstanceState.getInt("button_2");
+                button_3 = savedInstanceState.getInt("button_3");
+            }
             question = savedInstanceState.getString("question");
             questions = savedInstanceState.getInt("questions");
             questionPos = savedInstanceState.getInt("questionPos");
@@ -136,7 +176,9 @@ public class GameActivity extends AppCompatActivity {
             if(disablePlayAgainButton){
                 playAgainButton.setClickable(false);
             }
-        }else{
+        }
+        else
+        {
             createNextQuestion();
         }
     }
@@ -388,5 +430,35 @@ public class GameActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
         intent.putExtra(SearchManager.QUERY, query);
         startActivity(intent);
+    }
+
+    public void onPause()
+    {
+        super.onPause();
+
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        // Current session
+        editor.putInt("button_0", button_0);
+        editor.putInt("button_1", button_1);
+        editor.putInt("button_2", button_2);
+        editor.putInt("button_3", button_3);
+        editor.putString("question", question);
+        editor.putInt("questions", questions);
+        editor.putInt("questionsPos", questionPos);
+        editor.putInt("chances", chances);
+        editor.putBoolean("disable", disable);
+        editor.putBoolean("disableNextButton", disableNextButton);
+        editor.putBoolean("disablePlayAgainButton", disablePlayAgainButton);
+        editor.putInt("score", score);
+
+        // Past game 1
+
+
+        // Past game 2
+
+
+        editor.commit();
     }
 }
