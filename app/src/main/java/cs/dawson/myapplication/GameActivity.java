@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -34,8 +35,6 @@ public class GameActivity extends AppCompatActivity {
 
     ArrayList<Integer> answers = new ArrayList<Integer>();
     String[] questionsArray = new String[14];
-    //Images and Hints Arrays
-    String[] hintsArray = new String[14];
     private int[] images;
     private int[] happyFaces;
     private int[] sadFaces;
@@ -69,8 +68,6 @@ public class GameActivity extends AppCompatActivity {
 
         //Questions Array from Resource folder
         questionsArray = getResources().getStringArray(R.array.questions_array);
-        //Hints Array from Resource folder
-        hintsArray = getResources().getStringArray(R.array.hint_array);
 
         //Traffic Signs Images Array Id from Resource Folder
         images = new int[]{R.drawable.pic_0, R.drawable.pic_1, R.drawable.pic_2,
@@ -104,24 +101,74 @@ public class GameActivity extends AppCompatActivity {
         hintTextView = (TextView)findViewById(R.id.hintTextView);
         scoreTextView = (TextView)findViewById(R.id.scoreTextView);
 
+        createNextQuestion();
+
         //Restoring the main components of the game
-        SharedPreferences prefis = getPreferences(MODE_PRIVATE);
-        if(savedInstanceState != null){
+
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+
+        if(prefs.getInt("button_0", 0) != 0 && prefs.getInt("button_0", 0) != 0 && prefs.getInt("button_0", 0)!=0 && prefs.getInt("button_0", 0)!=0)
+        {
+            button_0 = prefs.getInt("button_0", 0); // WORKS
+            button_1 = prefs.getInt("button_1", 0); // WORKS
+            button_2 = prefs.getInt("button_2", 0); // WORKS
+            button_3 = prefs.getInt("button_3", 0); // WORKS
+            question = prefs.getString("question", null); // WORKS
+            questions = prefs.getInt("questions", 0);
+            questionPos = prefs.getInt("questionPos", 0);
+            chances = prefs.getInt("chances", 0);
+            disable = prefs.getBoolean("disable", false);
+            disableNextButton = prefs.getBoolean("disableNextButton", false);
+            disablePlayAgainButton = prefs.getBoolean("disablePlayAgainButton", false);
+            score = prefs.getInt("score", 0);
+            correctAnswers = prefs.getInt("correctAnswers", 0); // WORKS
+            incorrectAnswers = prefs.getInt("incorrectAnswers", 0); // WORKS
+
+
+            button0.setImageResource(button_0);
+            button1.setImageResource(button_1);
+            button2.setImageResource(button_2);
+            button3.setImageResource(button_3);
+            questionTextView.setText(question);
+            scoreTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers)); // WORKS
+            progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
+            nextButton.setClickable(true);
+            playAgainButton.setClickable(true);
+            if(disable){
+                disableButtons();
+            }
+            if(disableNextButton){
+                nextButton.setClickable(false);
+            }
+            if(disablePlayAgainButton){
+                playAgainButton.setClickable(false);
+            }
+        }
+        if(savedInstanceState != null ){
             // restore my counter
-            button_0 = savedInstanceState.getInt("button_0");
-            button_1 = savedInstanceState.getInt("button_1");
-            button_2 = savedInstanceState.getInt("button_2");
-            button_3 = savedInstanceState.getInt("button_3");
-            question = savedInstanceState.getString("question");
-            questions = savedInstanceState.getInt("questions");
+            if(savedInstanceState.getInt("button_0")!=0 && savedInstanceState.getInt("button_1")!=0
+                    && savedInstanceState.getInt("button_2")!=0 && savedInstanceState.getInt("button_3")!=0) {
+                button_0 = savedInstanceState.getInt("button_0");
+                button_1 = savedInstanceState.getInt("button_1");
+                button_2 = savedInstanceState.getInt("button_2");
+                button_3 = savedInstanceState.getInt("button_3");
+            }
+            if(savedInstanceState.getString("question") != null) {
+                question = savedInstanceState.getString("question");
+            }
+            if(savedInstanceState.getInt("questions") != 0)
+            {
+                questions = savedInstanceState.getInt("questions");
+            }
             questionPos = savedInstanceState.getInt("questionPos");
             chances = savedInstanceState.getInt("chances");
             disable = savedInstanceState.getBoolean("disable",false);
-            disableNextButton = savedInstanceState.getBoolean("disableNextButton",true);
+            disableNextButton = savedInstanceState.getBoolean("disableNextButton", true);
             disablePlayAgainButton = savedInstanceState.getBoolean("disablePlayAgainButton",true);
-            correctAnswers = savedInstanceState.getInt("correctAnswers");
-            incorrectAnswers = savedInstanceState.getInt("incorrectAnswers");
-            score = savedInstanceState.getInt("score");
+            if(savedInstanceState.getInt("correctAnswers") != 0 && savedInstanceState.getInt("incorrectAnswers") != 0) {
+                correctAnswers = savedInstanceState.getInt("correctAnswers");
+                incorrectAnswers = savedInstanceState.getInt("incorrectAnswers");
+            }
 
             button0.setImageResource(button_0);
             button1.setImageResource(button_1);
@@ -140,8 +187,11 @@ public class GameActivity extends AppCompatActivity {
             if(disablePlayAgainButton){
                 playAgainButton.setClickable(false);
             }
-        }else{
-            createNextQuestion();
+        }
+
+        if(questions >= 4)
+        {
+            playAgainButton.setClickable(true);
         }
     }
 
@@ -200,9 +250,6 @@ public class GameActivity extends AppCompatActivity {
 
         question = questionsArray[questionPos];
         questionTextView.setText(question);
-        hint = hintsArray[questionPos];
-        //hintTextView.setText(hintsArray[questionPos]);
-        //hintTextView.setVisibility(View.INVISIBLE);
 
         locationOfCorrectImage = rand.nextInt(4);
         for (int i=0; i<4; i++) {
@@ -230,6 +277,8 @@ public class GameActivity extends AppCompatActivity {
         button2.setImageResource(button_2);
         button3.setImageResource(button_3);
     }
+
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -320,7 +369,7 @@ public class GameActivity extends AppCompatActivity {
             questions++;
             scoreTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
             progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
-            if(questions == 4){
+            if(questions >= 4){
                 resultTextView.setText(R.string.correct_finish);
                 nextButton.setClickable(false);
                 disableNextButton = true;
@@ -400,5 +449,31 @@ public class GameActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
         intent.putExtra(SearchManager.QUERY, query);
         startActivity(intent);
+    }
+
+    public void onPause()
+    {
+        super.onPause();
+
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        // Current game session
+        editor.putInt("button_0", button_0);
+        editor.putInt("button_1", button_1);
+        editor.putInt("button_2", button_2);
+        editor.putInt("button_3", button_3);
+        editor.putString("question", question);
+        editor.putInt("questions", questions);
+        editor.putInt("questionsPos", questionPos);
+        editor.putInt("chances", chances);
+        editor.putBoolean("disable", disable);
+        editor.putBoolean("disableNextButton", disableNextButton);
+        editor.putBoolean("disablePlayAgainButton", disablePlayAgainButton);
+        editor.putInt("correctAnswers", correctAnswers);
+        editor.putInt("incorrectAnswers", incorrectAnswers);
+
+
+        editor.commit();
     }
 }
