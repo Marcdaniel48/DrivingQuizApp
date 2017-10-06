@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -159,14 +160,13 @@ public class GameActivity extends AppCompatActivity {
 
 
             if(disableNextButton)
-                nextButton.setClickable(true);
-            else
                 nextButton.setClickable(false);
+            else
+                nextButton.setClickable(true);
 
             if(disablePlayAgainButton)
                 playAgainButton.setClickable(false);
-            else
-                playAgainButton.setClickable(true);
+            else playAgainButton.setClickable(true);
 
             if(disable)
                 disableButtons();
@@ -202,8 +202,7 @@ public class GameActivity extends AppCompatActivity {
             if(savedInstanceState.getInt("questionPos") != 0)
                 questionPos = savedInstanceState.getInt("questionPos");
 
-            if(savedInstanceState.getInt("chances") != 0)
-                chances = savedInstanceState.getInt("chances");
+            chances = savedInstanceState.getInt("chances");
 
             disable = savedInstanceState.getBoolean("disable",false);
             disableNextButton = savedInstanceState.getBoolean("disableNextButton", true);
@@ -238,17 +237,11 @@ public class GameActivity extends AppCompatActivity {
             if(disablePlayAgainButton)
                 playAgainButton.setClickable(false);
             else
-                nextButton.setClickable(true);
+                playAgainButton.setClickable(true);
         }
 
-        if(questions >= 4)
-        {
-            playAgainButton.setClickable(true);
-        }
-        if(answeredQuestion) {
-            nextButton.setClickable(true);
-            enableButtons();
-        }
+        Log.d("DISABLE_IMAGE_BUTTONS", String.valueOf(disable));
+        Log.d("DISABLE_NEXT_BUTTON", String.valueOf(disableNextButton));
     }
 
     /**
@@ -279,6 +272,9 @@ public class GameActivity extends AppCompatActivity {
 
         nextButton.setClickable(false);
         disableNextButton = true;
+
+        disable = false;
+        disableButtons();
 
         //progressTextView.setBackground(null);
         progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
@@ -417,7 +413,6 @@ public class GameActivity extends AppCompatActivity {
         Random rand = new Random();
         if (view.getTag().toString().equals(Integer.toString(locationOfCorrectImage)))
         {
-            answeredQuestion = true;
 
             correctAnswers++;
 
@@ -450,17 +445,23 @@ public class GameActivity extends AppCompatActivity {
 
             disable = true;
             disableButtons();
+
             questions++;
             correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
             progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
+
             if(questions >= 4)
             {
                 answerResultTextView.setText(R.string.correct_finish);
+
                 nextButton.setClickable(false);
                 disableNextButton = true;
+
                 disableButtons();
+
                 playAgainButton.setClickable(true);
                 disablePlayAgainButton = false;
+
             }
             else
             {
@@ -504,27 +505,19 @@ public class GameActivity extends AppCompatActivity {
                 incorrectAnswers++;
                 answerResultTextView.setTextColor(Color.RED);
                 answerResultTextView.setText(R.string.wrong);
+
                 disable = true;
                 disableButtons();
+
                 playAgainButton.setClickable(false);
                 disablePlayAgainButton = true;
+
+                disableNextButton = false;
+                nextButton.setClickable(true);
+                
                 questions++;
                 correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
                 progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
-                if(questions == 4)
-                {
-                    answerResultTextView.setText(R.string.wrong_finished);
-                    nextButton.setClickable(false);
-                    disableNextButton = true;
-                    disableButtons();
-                    playAgainButton.setClickable(true);
-                    disablePlayAgainButton = false;
-                }
-                else
-                {
-                    nextButton.setClickable(true);
-                    disableNextButton = false;
-                }
             }
             else
             {
