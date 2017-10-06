@@ -514,7 +514,7 @@ public class GameActivity extends AppCompatActivity {
 
                 disableNextButton = false;
                 nextButton.setClickable(true);
-                
+
                 questions++;
                 correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
                 progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
