@@ -168,8 +168,6 @@ public class GameActivity extends AppCompatActivity {
             progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
             correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers)); // WORKS
 
-
-
             if(disableNextButton)
                 nextButton.setClickable(false);
             else
@@ -314,6 +312,7 @@ public class GameActivity extends AppCompatActivity {
         correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
 
         chances = 0;
+        questions++;
 
         disableNextButton = true;
         nextButton.setClickable(false);
@@ -353,6 +352,8 @@ public class GameActivity extends AppCompatActivity {
                 while (incorrectAnswer == questionPos || incorrectAnswer == previousNumber)
                 {
                     incorrectAnswer = rand.nextInt(14);
+                    Log.i("INC_ANSWERS","incorrect" + incorrectAnswer);
+                    Log.i("INC_ANSWERS","previous" + incorrectAnswer);
                 }
                 previousNumber = incorrectAnswer;
                 answers.add(imagesArray[incorrectAnswer]);
@@ -467,14 +468,12 @@ public class GameActivity extends AppCompatActivity {
                 default:
                     break;
             }
-
+            //boolean to be saved in the bundle to keep track of disabled buttons
             disable = true;
             disableButtons();
-
-            questions++;
             correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
             progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
-
+            //if questions is greater than or equal to 4 game finished with a correct answer
             if(questions >= 4)
             {
                 answerResultTextView.setText(R.string.correct_finish);
@@ -493,12 +492,12 @@ public class GameActivity extends AppCompatActivity {
                 nextButton.setClickable(true);
                 disableNextButton = false;
             }
-
-
         }
         else
         {
+            //user clicked the wrong image
             chances++;
+            Log.i("CHANCES","" + chances);
             int sadFace = rand.nextInt(2);
             switch (view.getTag().toString())
             {
@@ -525,24 +524,41 @@ public class GameActivity extends AppCompatActivity {
                 default:
                     break;
             }
+            //checking if the user clicked the wrong image for the second time
             if(chances > 1)
             {
                 incorrectAnswers++;
-                answerResultTextView.setTextColor(Color.RED);
-                answerResultTextView.setText(R.string.wrong);
-
                 disable = true;
                 disableButtons();
-
-                playAgainButton.setClickable(false);
-                disablePlayAgainButton = true;
-
-                disableNextButton = false;
-                nextButton.setClickable(true);
-
-                questions++;
                 correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
                 progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
+                //if questions is greater than or equal to 4 game finished.
+                if(questions >= 4)
+                {
+                    answerResultTextView.setText(R.string.wrong_finished);
+                    answerResultTextView.setTextColor(Color.RED);
+
+                    nextButton.setClickable(false);
+                    disableNextButton = true;
+                    disableButtons();
+                    playAgainButton.setClickable(true);
+                    disablePlayAgainButton = false;
+
+                }else{
+                    Log.i("CHANCES","" + chances);
+                    answerResultTextView.setText(R.string.wrong);
+                    answerResultTextView.setTextColor(Color.RED);
+                    disable = true;
+                    disableButtons();
+
+                    playAgainButton.setClickable(false);
+                    disablePlayAgainButton = true;
+
+                    disableNextButton = false;
+                    nextButton.setClickable(true);
+                    correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
+                    progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
+                }
             }
             else
             {
