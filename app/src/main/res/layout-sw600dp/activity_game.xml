@@ -169,6 +169,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:orientation="vertical"
         android:padding="10dp"
         android:weightSum="1">
 
@@ -179,6 +180,13 @@
             android:onClick="showHint"
             android:text="@string/hint"
             android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="launchAboutActivity"
+            android:text="@string/aboutButtonHint" />
 
     </LinearLayout>
 

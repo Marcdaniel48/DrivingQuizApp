@@ -74,6 +74,8 @@ public class GameActivity extends AppCompatActivity {
 
     boolean answeredQuestion = false;
 
+    int totalAttempts = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,6 +156,8 @@ public class GameActivity extends AppCompatActivity {
             incorrectAnswers = prefs.getInt("incorrectAnswers", 0); // WORKS
 
             answeredQuestion = prefs.getBoolean("answeredQuestion", false);
+
+            totalAttempts = prefs.getInt("totalAttempts", 0);
 
             // Setting
             imageButton1.setImageResource(button1ImageRes);
@@ -474,7 +478,7 @@ public class GameActivity extends AppCompatActivity {
             if(questions >= 4)
             {
                 answerResultTextView.setText(R.string.correct_finish);
-
+                totalAttempts++;
                 nextButton.setClickable(false);
                 disableNextButton = true;
 
@@ -544,6 +548,7 @@ public class GameActivity extends AppCompatActivity {
             {
                 answerResultTextView.setTextColor(Color.RED);
                 answerResultTextView.setText(R.string.wrong_tryagain);
+                totalAttempts++;
                 nextButton.setClickable(false);
                 playAgainButton.setClickable(false);
                 disablePlayAgainButton = true;
@@ -588,9 +593,22 @@ public class GameActivity extends AppCompatActivity {
         editor.putInt("correctAnswers", correctAnswers);
         editor.putInt("incorrectAnswers", incorrectAnswers);
 
+        editor.putInt("totalAttempts", totalAttempts);
+
         editor.putBoolean("answeredQuestion", answeredQuestion);
 
 
         editor.commit();
+    }
+
+    public void launchAboutActivity(View v)
+    {
+        Intent i = new Intent(this, AboutActivity.class);
+
+        Log.d("ATTEMPTS", String.valueOf(totalAttempts));
+
+        i.putExtra("totalAttempts", totalAttempts);
+
+        startActivity(i);
     }
 }
