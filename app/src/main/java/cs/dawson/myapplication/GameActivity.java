@@ -17,6 +17,9 @@ import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
+    // String for LogCat documentation
+    private final static String METHOD_TAG = "GameActivity";
+
     // Displays amount of questions answered out of the number of total questions
     TextView progressTextView;
 
@@ -47,6 +50,7 @@ public class GameActivity extends AppCompatActivity {
     private int[] happyFacesArray;
     private int[] sadFacesArray;
 
+    //Variables to control the logic of the game
     int locationOfCorrectImage;
     int correctAnswers = 0;
     int incorrectAnswers = 0;
@@ -74,6 +78,9 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        // TODO: Emit LogCat message
+        Log.i(METHOD_TAG, "Entered the onStart() method");
 
         // Questions Array from Resource folder
         questionsArray = getResources().getStringArray(R.array.questions_array);
@@ -250,6 +257,8 @@ public class GameActivity extends AppCompatActivity {
      */
     public void nextButton(View view)
     {
+        // TODO: Emit LogCat message
+        Log.i(METHOD_TAG, "nextButton method Invoked");
         createNextQuestion();
     }
 
@@ -258,6 +267,9 @@ public class GameActivity extends AppCompatActivity {
      * @param view
      */
     public void playAgain(View view){
+        // TODO: Emit LogCat message
+        Log.i(METHOD_TAG, "playAgain method() invoked");
+
         incorrectAnswers = 0;
         correctAnswers = 0;
         questions = 0;
@@ -289,6 +301,9 @@ public class GameActivity extends AppCompatActivity {
      * and sets the images on the screen.
      */
     public void createNextQuestion() {
+
+        // TODO: Emit LogCat message
+        Log.i(METHOD_TAG, "createNextQuestion() method Invoked");
 
         progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
 
@@ -340,8 +355,6 @@ public class GameActivity extends AppCompatActivity {
             }
         }
 
-
-
         //holds the image id from the resource folder.
         button1ImageRes = answers.get(0);
         button2ImageRes = answers.get(1);
@@ -358,6 +371,9 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+
+        // TODO: Emit LogCat message
+        Log.i(METHOD_TAG, "onSaveInstanceState() method Invoked");
 
         outState.putInt("button1ImageRes",button1ImageRes);
         outState.putInt("button2ImageRes",button2ImageRes);
@@ -383,6 +399,8 @@ public class GameActivity extends AppCompatActivity {
      * also disable the playAgain Button.
      */
     public void disableButtons(){
+        // TODO: Emit LogCat message
+        Log.i(METHOD_TAG, "disableButtons() method Invoked");
 
         imageButton1.setClickable(false);
         imageButton2.setClickable(false);
@@ -410,10 +428,13 @@ public class GameActivity extends AppCompatActivity {
      * @param view
      */
     public void chooseAnswer(View view) {
+        // TODO: Emit LogCat message
+        Log.i(METHOD_TAG, "chooseAnswer() method Invoked");
+
         Random rand = new Random();
+        //condition used when the user clicks in the correct image
         if (view.getTag().toString().equals(Integer.toString(locationOfCorrectImage)))
         {
-
             correctAnswers++;
 
             answerResultTextView.setTextColor(Color.GREEN);
@@ -534,6 +555,9 @@ public class GameActivity extends AppCompatActivity {
 
     public void showHint(View v)
     {
+        // TODO: Emit LogCat message
+        Log.i(METHOD_TAG, "showHint() method Invoked");
+
         String query = questionSentenceTextView.getText().toString();
         Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
         intent.putExtra(SearchManager.QUERY, query);
@@ -542,6 +566,8 @@ public class GameActivity extends AppCompatActivity {
 
     public void onPause()
     {
+        // TODO: Emit LogCat message
+        Log.i(METHOD_TAG, "onPause() method Invoked");
         super.onPause();
 
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
