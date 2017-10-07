@@ -152,12 +152,13 @@
             android:id="@+id/aboutButton"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_weight="1"
-            android:text="@string/aboutButtonHint"
-            android:textSize="24sp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@drawable/border"/>
+            android:layout_weight="1"
+            android:background="@drawable/border"
+            android:onClick="launchAboutActivity"
+            android:text="@string/aboutButtonHint"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/hintButton"
