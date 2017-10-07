@@ -26,11 +26,11 @@ public class AboutActivity extends Activity {
         results2TextView = (TextView)findViewById(R.id.resultScore2);
 
         int numberOfAttempts = getIntent().getExtras().getInt("totalAttempts");
-        numberOfAttemptsTextView.setText(String.valueOf(numberOfAttempts));
+        numberOfAttemptsTextView.setText(" " + String.valueOf(numberOfAttempts));
 
         int correctAnswersOne = getIntent().getExtras().getInt("pastGameOneCorrectAnswers");
         int incorrectAnswersOne = getIntent().getExtras().getInt("pastGameOneIncorrectAnswers");
-        results1TextView.setText("Past score -> Correct: " + String.valueOf(correctAnswersOne) + ", Incorrect: " + String.valueOf(incorrectAnswersOne));
+        results1TextView.setText("Previous past score -> Correct: " + String.valueOf(correctAnswersOne) + ", Incorrect: " + String.valueOf(incorrectAnswersOne));
 
         int correctAnswersTwo = getIntent().getExtras().getInt("pastGameTwoCorrectAnswers");
         int incorrectAnswersTwo = getIntent().getExtras().getInt("pastGameTwoIncorrectAnswers");
