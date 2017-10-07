@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
     // Display a sad face on incorrect answer
     private int[] sadFacesArray;
 
+    // A List that will be used to remember the questions that have already been asked.
+    List<String> questionsAsked = new ArrayList<String>();
+
     //Variables to control the logic of the game
     int locationOfCorrectImage;
     int correctAnswers = 0;
@@ -52,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
     int questions = 0;
     int chances = 0;
     int numberOfQuestions = 0;
-    int previousNumber = -1;
+    // This int represents an index that will be used to set the images of the image buttons
+    // that are not the correct answer button.
+    int incorrectAnswer = -1;
 
     //Variables to hold the id of images from resources
     int button1ImageRes;
@@ -279,6 +284,8 @@ public class MainActivity extends AppCompatActivity {
         progressTextView.setText("Questions: " + Integer.toString(questions) + "/" + Integer.toString(4));
         correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
 
+        questionsAsked.clear();
+
         createNextQuestion();
     }
 
@@ -320,19 +327,26 @@ public class MainActivity extends AppCompatActivity {
 
         enableButtons();
 
-        int incorrectAnswer;
-
-        previousNumber = -1;
-
         answers.clear();
+        List<Integer> previousNumbers = new ArrayList<Integer>();
+        incorrectAnswer = -1;
 
         //Create a random object
         Random rand = new Random();
 
+        // questionPos will be used as an index for the questionsArray to assign the
+        // quiz question.
         questionPos = rand.nextInt(14);
-
         question = questionsArray[questionPos];
+        // This while loop should make sure that the same question per quiz attempt won't be asked again.
+        while(questionsAsked.contains(question))
+        {
+            questionPos = rand.nextInt(14);
+            question = questionsArray[questionPos];
+        }
+        questionsAsked.add(question);
         questionSentenceTextView.setText(question);
+
 
         locationOfCorrectImage = rand.nextInt(4);
 
@@ -345,13 +359,17 @@ public class MainActivity extends AppCompatActivity {
             else
             {
                 incorrectAnswer = rand.nextInt(14);
-                while (incorrectAnswer == questionPos || incorrectAnswer == previousNumber)
+
+                // Makes sure the correct-answer image doesn't get placed on the wrong bubtton
+                // And prevents image duplication.
+                while (incorrectAnswer == questionPos || previousNumbers.contains(incorrectAnswer))
                 {
                     incorrectAnswer = rand.nextInt(14);
                     Log.i("INC_ANSWERS","incorrect" + incorrectAnswer);
                     Log.i("INC_ANSWERS","previous" + incorrectAnswer);
                 }
-                previousNumber = incorrectAnswer;
+
+                previousNumbers.add(incorrectAnswer);
                 answers.add(imagesArray[incorrectAnswer]);
             }
         }
