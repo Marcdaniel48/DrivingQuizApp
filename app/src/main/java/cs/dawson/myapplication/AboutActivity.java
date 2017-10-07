@@ -34,7 +34,7 @@ public class AboutActivity extends Activity {
 
         int correctAnswersTwo = getIntent().getExtras().getInt("pastGameTwoCorrectAnswers");
         int incorrectAnswersTwo = getIntent().getExtras().getInt("pastGameTwoIncorrectAnswers");
-        results1TextView.setText("Most recent past score -> Correct: " + String.valueOf(correctAnswersTwo) + ", Incorrect: " + String.valueOf(incorrectAnswersTwo));
+        results2TextView.setText("Most recent past score -> Correct: " + String.valueOf(correctAnswersTwo) + ", Incorrect: " + String.valueOf(incorrectAnswersTwo));
     }
 
 }

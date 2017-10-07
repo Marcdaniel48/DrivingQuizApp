@@ -498,6 +498,12 @@ public class GameActivity extends AppCompatActivity {
                     pastGameTwoIncorrectAnswers = incorrectAnswers;
                 }
 
+                // Keeps track of the past game scores
+                Log.d("PAST_GAME_ONE_CORRECT", String.valueOf(pastGameOneCorrectAnswers));
+                Log.d("PAST_GAME_ONE_INCORRECT", String.valueOf(pastGameOneIncorrectAnswers));
+                Log.d("PAST_GAME_TWO_CORRECT", String.valueOf(pastGameTwoCorrectAnswers));
+                Log.d("PAST_GAME_TWO_INCORRECT", String.valueOf(pastGameTwoIncorrectAnswers));
+
                 answerResultTextView.setText(R.string.correct_finish);
                 nextButton.setClickable(false);
                 disableNextButton = true;
@@ -578,6 +584,12 @@ public class GameActivity extends AppCompatActivity {
                         pastGameTwoIncorrectAnswers = incorrectAnswers;
                     }
 
+                    // Keeps track of the past game scores
+                    Log.d("PAST_GAME_ONE_CORRECT", String.valueOf(pastGameOneCorrectAnswers));
+                    Log.d("PAST_GAME_ONE_INCORRECT", String.valueOf(pastGameOneIncorrectAnswers));
+                    Log.d("PAST_GAME_TWO_CORRECT", String.valueOf(pastGameTwoCorrectAnswers));
+                    Log.d("PAST_GAME_TWO_INCORRECT", String.valueOf(pastGameTwoIncorrectAnswers));
+
                     answerResultTextView.setText(R.string.wrong_finished);
                     answerResultTextView.setTextColor(Color.RED);
 
@@ -587,7 +599,9 @@ public class GameActivity extends AppCompatActivity {
                     playAgainButton.setClickable(true);
                     disablePlayAgainButton = false;
 
-                }else{
+                }
+                else
+                {
                     Log.i("CHANCES","" + chances);
                     answerResultTextView.setText(R.string.wrong);
                     answerResultTextView.setTextColor(Color.RED);
@@ -669,8 +683,10 @@ public class GameActivity extends AppCompatActivity {
         Log.d("ATTEMPTS", String.valueOf(totalAttempts));
 
         i.putExtra("totalAttempts", totalAttempts);
+
         i.putExtra("pastGameOneCorrectAnswers", pastGameOneCorrectAnswers);
         i.putExtra("pastGameOneIncorrectAnswers", pastGameOneIncorrectAnswers);
+
         i.putExtra("pastGameOneCorrectAnswers", pastGameOneCorrectAnswers);
         i.putExtra("pastGameOneIncorrectAnswers", pastGameOneIncorrectAnswers);
 
