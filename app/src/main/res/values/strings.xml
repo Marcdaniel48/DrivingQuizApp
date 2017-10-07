@@ -52,4 +52,6 @@
     <string name="wrong_tryagain">Wrong! Try One More Time!</string>
     <string name="wrong_finished">Wrong! Test Finished</string>
 
+    <string name="attemptsString">Number of total attempts: </string>
+
 </resources>
