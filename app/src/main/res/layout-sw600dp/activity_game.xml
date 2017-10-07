@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#404040"
     android:orientation="vertical"
-    tools:context="cs.dawson.myapplication.GameActivity"
+    tools:context="cs.dawson.myapplication.MainActivity"
     android:weightSum="1"
     android:gravity="center">
 
@@ -47,7 +47,7 @@
             android:layout_height="match_parent"
             android:fontFamily="sans-serif-smallcaps"
             android:gravity="center_horizontal"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorWhite"
             android:textSize="32sp" />
 
 
@@ -151,7 +151,8 @@
             android:layout_weight="1"
             android:onClick="playAgain"
             android:text="@string/playagain"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:background="@drawable/border"/>
 
         <Button
             android:id="@+id/nextButton"
@@ -161,7 +162,8 @@
             android:layout_weight="1"
             android:onClick="nextButton"
             android:text="@string/next"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:background="@drawable/border"/>
 
     </LinearLayout>
 
@@ -179,14 +181,16 @@
             android:layout_height="60dp"
             android:onClick="showHint"
             android:text="@string/hint"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:background="@drawable/border"/>
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:onClick="launchAboutActivity"
-            android:text="@string/aboutButtonHint" />
+            android:text="@string/aboutButtonHint"
+            android:background="@drawable/border"/>
 
     </LinearLayout>
 

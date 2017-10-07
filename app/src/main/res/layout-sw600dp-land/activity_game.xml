@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#404040"
     android:orientation="vertical"
-    tools:context="cs.dawson.myapplication.GameActivity"
+    tools:context="cs.dawson.myapplication.MainActivity"
     android:weightSum="1"
     android:gravity="center">
 
