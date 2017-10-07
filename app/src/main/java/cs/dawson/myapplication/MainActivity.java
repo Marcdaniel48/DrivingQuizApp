@@ -170,13 +170,13 @@ public class MainActivity extends AppCompatActivity {
             correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
 
             if(disableNextButton)
-                nextButton.setClickable(false);
+                nextButton.setEnabled(false);
             else
-                nextButton.setClickable(true);
+                nextButton.setEnabled(true);
 
             if(disablePlayAgainButton)
-                playAgainButton.setClickable(false);
-            else playAgainButton.setClickable(true);
+                playAgainButton.setEnabled(false);
+            else playAgainButton.setEnabled(true);
 
             if(disableImageButtons)
                 disableButtons();
@@ -247,14 +247,14 @@ public class MainActivity extends AppCompatActivity {
                 enableButtons();
 
             if(disableNextButton)
-                nextButton.setClickable(false);
+                nextButton.setEnabled(false);
             else
-                nextButton.setClickable(true);
+                nextButton.setEnabled(true);
 
             if(disablePlayAgainButton)
-                playAgainButton.setClickable(false);
+                playAgainButton.setEnabled(false);
             else
-                playAgainButton.setClickable(true);
+                playAgainButton.setEnabled(true);
         }
 
         Log.d("DISABLE_IMAGE_BUTTONS", String.valueOf(disableImageButtons));
@@ -317,10 +317,10 @@ public class MainActivity extends AppCompatActivity {
         questions++;
 
         disableNextButton = true;
-        nextButton.setClickable(false);
+        nextButton.setEnabled(false);
 
         disablePlayAgainButton = true;
-        playAgainButton.setClickable(false);
+        playAgainButton.setEnabled(false);
 
         answerResult = "";
         answerResultTextView.setText(answerResult);
@@ -420,10 +420,10 @@ public class MainActivity extends AppCompatActivity {
         // TODO: Emit LogCat message
         Log.i(METHOD_TAG, "disableButtons() method Invoked");
 
-        imageButton1.setClickable(false);
-        imageButton2.setClickable(false);
-        imageButton3.setClickable(false);
-        imageButton4.setClickable(false);
+        imageButton1.setEnabled(false);
+        imageButton2.setEnabled(false);
+        imageButton3.setEnabled(false);
+        imageButton4.setEnabled(false);
     }
 
     /**
@@ -432,10 +432,10 @@ public class MainActivity extends AppCompatActivity {
      */
     public void enableButtons(){
 
-        imageButton1.setClickable(true);
-        imageButton2.setClickable(true);
-        imageButton3.setClickable(true);
-        imageButton4.setClickable(true);
+        imageButton1.setEnabled(true);
+        imageButton2.setEnabled(true);
+        imageButton3.setEnabled(true);
+        imageButton4.setEnabled(true);
     }
 
     /**
@@ -525,18 +525,18 @@ public class MainActivity extends AppCompatActivity {
 
                 answerResult = "Correct! Test Finished!";
                 answerResultTextView.setText(answerResult);
-                nextButton.setClickable(false);
+                nextButton.setEnabled(false);
                 disableNextButton = true;
 
                 disableButtons();
 
-                playAgainButton.setClickable(true);
+                playAgainButton.setEnabled(true);
                 disablePlayAgainButton = false;
 
             }
             else
             {
-                nextButton.setClickable(true);
+                nextButton.setEnabled(true);
                 disableNextButton = false;
             }
         }
@@ -551,22 +551,22 @@ public class MainActivity extends AppCompatActivity {
                 case "0":
                     button1ImageRes = sadFacesArray[sadFace];
                     imageButton1.setImageResource(button1ImageRes);
-                    imageButton1.setClickable(false);
+                    imageButton1.setEnabled(false);
                     break;
                 case "1":
                     button2ImageRes = sadFacesArray[sadFace];
                     imageButton2.setImageResource(button2ImageRes);
-                    imageButton2.setClickable(false);
+                    imageButton2.setEnabled(false);
                     break;
                 case "2":
                     button3ImageRes = sadFacesArray[sadFace];
                     imageButton3.setImageResource(button3ImageRes);
-                    imageButton3.setClickable(false);
+                    imageButton3.setEnabled(false);
                     break;
                 case "3":
                     button4ImageRes = sadFacesArray[sadFace];
                     imageButton4.setImageResource(button4ImageRes);
-                    imageButton4.setClickable(false);
+                    imageButton4.setEnabled(false);
                     break;
                 default:
                     break;
@@ -616,10 +616,10 @@ public class MainActivity extends AppCompatActivity {
                     answerResultTextView.setText(answerResult);
                     answerResultTextView.setTextColor(Color.RED);
 
-                    nextButton.setClickable(false);
+                    nextButton.setEnabled(false);
                     disableNextButton = true;
                     disableButtons();
-                    playAgainButton.setClickable(true);
+                    playAgainButton.setEnabled(true);
                     disablePlayAgainButton = false;
 
                 }
@@ -633,11 +633,11 @@ public class MainActivity extends AppCompatActivity {
                     disableImageButtons = true;
                     disableButtons();
 
-                    playAgainButton.setClickable(false);
+                    playAgainButton.setEnabled(false);
                     disablePlayAgainButton = true;
 
                     disableNextButton = false;
-                    nextButton.setClickable(true);
+                    nextButton.setEnabled(true);
                     correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
                     progressTextView.setText("Questions: " + Integer.toString(questions) + "/" + Integer.toString(4));
                 }
@@ -647,8 +647,8 @@ public class MainActivity extends AppCompatActivity {
                 answerResult = "Wrong! Try one more time!";
                 answerResultTextView.setTextColor(Color.RED);
                 answerResultTextView.setText(answerResult);
-                nextButton.setClickable(false);
-                playAgainButton.setClickable(false);
+                nextButton.setEnabled(false);
+                playAgainButton.setEnabled(false);
                 disablePlayAgainButton = true;
                 disableNextButton = true;
                 disableImageButtons = false;
