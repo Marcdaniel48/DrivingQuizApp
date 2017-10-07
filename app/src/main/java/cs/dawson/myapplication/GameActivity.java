@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
@@ -22,32 +23,26 @@ public class GameActivity extends AppCompatActivity {
 
     // Displays amount of questions answered out of the number of total questions
     TextView progressTextView;
-
     // Displays the amount of answers that the user got correct or incorrect
     TextView correctIncorrectTextView;
-
     // The sentence that describes one of the four images of the ImageButtons
     TextView questionSentenceTextView;
-
     // Displays whether the user answered correctly or incorrectly
     TextView answerResultTextView;
 
     // Image buttons
-    ImageButton imageButton1;
-    ImageButton imageButton2;
-    ImageButton imageButton3;
-    ImageButton imageButton4;
+    ImageButton imageButton1, imageButton2, imageButton3, imageButton4;
 
     // The other buttons
-    Button nextButton;
-    Button playAgainButton;
-    Button hintButton;
+    Button nextButton, playAgainButton, hintButton;
 
     // Arrays
     ArrayList<Integer> answers = new ArrayList<Integer>();
     String[] questionsArray = new String[14];
     private int[] imagesArray;
+    // Display a happy face on correct answer
     private int[] happyFacesArray;
+    // Display a sad face on incorrect answer
     private int[] sadFacesArray;
 
     //Variables to control the logic of the game
@@ -66,15 +61,18 @@ public class GameActivity extends AppCompatActivity {
     int button4ImageRes;
 
     //Variables to control the flow of the game
-    boolean disable = false;
+    boolean disableImageButtons = false;
     boolean disableNextButton = false;
     boolean disablePlayAgainButton = true;
     String question;
     int questionPos;
 
-    boolean answeredQuestion = false;
-
+    // Data that's going to be saved using SharedPreferences and that will appear in the 'about' activity
     int totalAttempts = 0;
+    int pastGameOneCorrectAnswers = 0;
+    int pastGameOneIncorrectAnswers = 0;
+    int pastGameTwoCorrectAnswers = 0;
+    int pastGameTwoIncorrectAnswers = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,46 +116,40 @@ public class GameActivity extends AppCompatActivity {
 
         //main buttons of the game
         nextButton = (Button)findViewById(R.id.nextButton);
-
         playAgainButton = (Button)findViewById(R.id.playAgainButton);
-
         hintButton = (Button)findViewById(R.id.hintButton);
 
-        //Components to control the progress of the game
-
+        //Components that tell the user the state of the game
         progressTextView = (TextView)findViewById(R.id.progressTextView);
         answerResultTextView = (TextView)findViewById(R.id.resultTextView);
-
         questionSentenceTextView = (TextView)findViewById(R.id.questionTextView);
         correctIncorrectTextView = (TextView)findViewById(R.id.scoreTextView);
 
+        // Generate a question
         createNextQuestion();
 
-        //Restoring the main components of the game
-        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        // Everything under here is SharedPreferences and savedInstanceState getting and loading
 
         // Shared preferences loading
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        // Checks to see if all of the buttons are not 0 (null). If they aren't, then start retrieving saved SharedPreferences data.
         if(prefs.getInt("button1ImageRes", 0) != 0 && prefs.getInt("button1ImageRes", 0) != 0 && prefs.getInt("button1ImageRes", 0)!=0 && prefs.getInt("button1ImageRes", 0)!=0)
         {
             // Getting
-            button1ImageRes = prefs.getInt("button1ImageRes", 0); // WORKS
-            button2ImageRes = prefs.getInt("button2ImageRes", 0); // WORKS
-            button3ImageRes = prefs.getInt("button3ImageRes", 0); // WORKS
-            button4ImageRes = prefs.getInt("button4ImageRes", 0); // WORKS
+            button1ImageRes = prefs.getInt("button1ImageRes", 0);
+            button2ImageRes = prefs.getInt("button2ImageRes", 0);
+            button3ImageRes = prefs.getInt("button3ImageRes", 0);
+            button4ImageRes = prefs.getInt("button4ImageRes", 0);
 
-            question = prefs.getString("question", null); // WORKS
+            question = prefs.getString("question", null);
             questions = prefs.getInt("questions", 0);
             questionPos = prefs.getInt("questionPos", 0);
             chances = prefs.getInt("chances", 0);
-            disable = prefs.getBoolean("disable", false);
+            disableImageButtons = prefs.getBoolean("disableImageButtons", false);
             disableNextButton = prefs.getBoolean("disableNextButton", false);
             disablePlayAgainButton = prefs.getBoolean("disablePlayAgainButton", false);
-            correctAnswers = prefs.getInt("correctAnswers", 0); // WORKS
-            incorrectAnswers = prefs.getInt("incorrectAnswers", 0); // WORKS
-
-            answeredQuestion = prefs.getBoolean("answeredQuestion", false);
-
-            totalAttempts = prefs.getInt("totalAttempts", 0);
+            correctAnswers = prefs.getInt("correctAnswers", 0);
+            incorrectAnswers = prefs.getInt("incorrectAnswers", 0);
 
             // Setting
             imageButton1.setImageResource(button1ImageRes);
@@ -166,7 +158,7 @@ public class GameActivity extends AppCompatActivity {
             imageButton4.setImageResource(button4ImageRes);
             questionSentenceTextView.setText(question);
             progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
-            correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers)); // WORKS
+            correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
 
             if(disableNextButton)
                 nextButton.setClickable(false);
@@ -177,13 +169,20 @@ public class GameActivity extends AppCompatActivity {
                 playAgainButton.setClickable(false);
             else playAgainButton.setClickable(true);
 
-            if(disable)
+            if(disableImageButtons)
                 disableButtons();
             else
                 enableButtons();
+
+            totalAttempts = prefs.getInt("totalAttempts", 0);
+            pastGameOneCorrectAnswers = prefs.getInt("pastGameOneCorrectAnswers", 0);
+            pastGameOneIncorrectAnswers = prefs.getInt("pastGameOneIncorrectAnswers", 0);
+            pastGameTwoCorrectAnswers = prefs.getInt("pastGameTwoCorrectAnswers", 0);
+            pastGameTwoIncorrectAnswers = prefs.getInt("pastGameTwoIncorrectAnswers", 0);
         }
 
-
+        // Bundle saved instance state loading
+        // Checks if savedInstanceState is null, then more ifs that check if certain elements are not null or 0.
         if(savedInstanceState != null )
         {
             if
@@ -213,7 +212,7 @@ public class GameActivity extends AppCompatActivity {
 
             chances = savedInstanceState.getInt("chances");
 
-            disable = savedInstanceState.getBoolean("disable",false);
+            disableImageButtons = savedInstanceState.getBoolean("disableImageButtons",false);
             disableNextButton = savedInstanceState.getBoolean("disableNextButton", true);
             disablePlayAgainButton = savedInstanceState.getBoolean("disablePlayAgainButton",true);
 
@@ -233,7 +232,7 @@ public class GameActivity extends AppCompatActivity {
             correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
             progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
 
-            if(disable)
+            if(disableImageButtons)
                 disableButtons();
             else
                 enableButtons();
@@ -249,19 +248,8 @@ public class GameActivity extends AppCompatActivity {
                 playAgainButton.setClickable(true);
         }
 
-        Log.d("DISABLE_IMAGE_BUTTONS", String.valueOf(disable));
+        Log.d("DISABLE_IMAGE_BUTTONS", String.valueOf(disableImageButtons));
         Log.d("DISABLE_NEXT_BUTTON", String.valueOf(disableNextButton));
-    }
-
-    /**
-     * The nextButton method invokes the createNextQuestion.
-     * @param view
-     */
-    public void nextButton(View view)
-    {
-        // TODO: Emit LogCat message
-        Log.i(METHOD_TAG, "nextButton method Invoked");
-        createNextQuestion();
     }
 
     /**
@@ -287,13 +275,24 @@ public class GameActivity extends AppCompatActivity {
         nextButton.setClickable(false);
         disableNextButton = true;
 
-        disable = false;
+        disableImageButtons = false;
         disableButtons();
 
         //progressTextView.setBackground(null);
         progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
         correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
 
+        createNextQuestion();
+    }
+
+    /**
+     * The nextButton method invokes the createNextQuestion.
+     * @param view
+     */
+    public void nextButton(View view)
+    {
+        // TODO: Emit LogCat message
+        Log.i(METHOD_TAG, "nextButton method Invoked");
         createNextQuestion();
     }
 
@@ -388,14 +387,13 @@ public class GameActivity extends AppCompatActivity {
         outState.putInt("questionPos", questionPos);
         outState.putString("question", question);
         outState.putInt("questions", questions);
-        outState.putBoolean("disable", disable);
+        outState.putBoolean("disableImageButtons", disableImageButtons);
         outState.putBoolean("disableNextButton", disableNextButton);
         outState.putBoolean("disablePlayAgainButton", disablePlayAgainButton);
         outState.putInt("chances", chances);
         outState.putInt("correctAnswers", correctAnswers);
         outState.putInt("incorrectAnswers", incorrectAnswers);
 
-        outState.putBoolean("answeredQuestion", answeredQuestion);
     }
 
     /**
@@ -469,15 +467,38 @@ public class GameActivity extends AppCompatActivity {
                     break;
             }
             //boolean to be saved in the bundle to keep track of disabled buttons
-            disable = true;
+            disableImageButtons = true;
             disableButtons();
             correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
             progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
+
             //if questions is greater than or equal to 4 game finished with a correct answer
             if(questions >= 4)
             {
-                answerResultTextView.setText(R.string.correct_finish);
                 totalAttempts++;
+
+                // pastGameTwo is the score of the user's latest quiz attempt. So we want to push the
+                // score of the attempt prior that that attempt to pastGameOne.
+                if(pastGameTwoCorrectAnswers != 0 && pastGameTwoIncorrectAnswers != 0)
+                {
+                    pastGameOneCorrectAnswers = pastGameTwoCorrectAnswers;
+                    pastGameOneIncorrectAnswers = pastGameTwoIncorrectAnswers;
+
+                    pastGameTwoCorrectAnswers = correctAnswers;
+                    pastGameTwoIncorrectAnswers = incorrectAnswers;
+                }
+                else if(pastGameOneCorrectAnswers == 0 && pastGameOneIncorrectAnswers == 0)
+                {
+                    pastGameOneCorrectAnswers = correctAnswers;
+                    pastGameOneIncorrectAnswers = incorrectAnswers;
+                }
+                else if(pastGameTwoCorrectAnswers == 0 && pastGameTwoIncorrectAnswers == 0)
+                {
+                    pastGameTwoCorrectAnswers = correctAnswers;
+                    pastGameTwoIncorrectAnswers = incorrectAnswers;
+                }
+
+                answerResultTextView.setText(R.string.correct_finish);
                 nextButton.setClickable(false);
                 disableNextButton = true;
 
@@ -528,13 +549,35 @@ public class GameActivity extends AppCompatActivity {
             if(chances > 1)
             {
                 incorrectAnswers++;
-                disable = true;
+                disableImageButtons = true;
                 disableButtons();
                 correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
                 progressTextView.setText("Questions:" + Integer.toString(questions) + "/" + Integer.toString(4));
+
                 //if questions is greater than or equal to 4 game finished.
                 if(questions >= 4)
                 {
+                    totalAttempts++;
+
+                    if(pastGameTwoCorrectAnswers != 0 && pastGameTwoIncorrectAnswers != 0)
+                    {
+                        pastGameOneCorrectAnswers = pastGameTwoCorrectAnswers;
+                        pastGameOneIncorrectAnswers = pastGameTwoIncorrectAnswers;
+
+                        pastGameTwoCorrectAnswers = correctAnswers;
+                        pastGameTwoIncorrectAnswers = incorrectAnswers;
+                    }
+                    else if(pastGameOneCorrectAnswers == 0 && pastGameOneIncorrectAnswers == 0)
+                    {
+                        pastGameOneCorrectAnswers = correctAnswers;
+                        pastGameOneIncorrectAnswers = incorrectAnswers;
+                    }
+                    else if(pastGameTwoCorrectAnswers == 0 && pastGameTwoIncorrectAnswers == 0)
+                    {
+                        pastGameTwoCorrectAnswers = correctAnswers;
+                        pastGameTwoIncorrectAnswers = incorrectAnswers;
+                    }
+
                     answerResultTextView.setText(R.string.wrong_finished);
                     answerResultTextView.setTextColor(Color.RED);
 
@@ -548,7 +591,7 @@ public class GameActivity extends AppCompatActivity {
                     Log.i("CHANCES","" + chances);
                     answerResultTextView.setText(R.string.wrong);
                     answerResultTextView.setTextColor(Color.RED);
-                    disable = true;
+                    disableImageButtons = true;
                     disableButtons();
 
                     playAgainButton.setClickable(false);
@@ -564,12 +607,11 @@ public class GameActivity extends AppCompatActivity {
             {
                 answerResultTextView.setTextColor(Color.RED);
                 answerResultTextView.setText(R.string.wrong_tryagain);
-                totalAttempts++;
                 nextButton.setClickable(false);
                 playAgainButton.setClickable(false);
                 disablePlayAgainButton = true;
                 disableNextButton = true;
-                disable = false;
+                disableImageButtons = false;
             }
         }
     }
@@ -603,7 +645,7 @@ public class GameActivity extends AppCompatActivity {
         editor.putInt("questions", questions);
         editor.putInt("questionsPos", questionPos);
         editor.putInt("chances", chances);
-        editor.putBoolean("disable", disable);
+        editor.putBoolean("disableImageButtons", disableImageButtons);
         editor.putBoolean("disableNextButton", disableNextButton);
         editor.putBoolean("disablePlayAgainButton", disablePlayAgainButton);
         editor.putInt("correctAnswers", correctAnswers);
@@ -611,8 +653,11 @@ public class GameActivity extends AppCompatActivity {
 
         editor.putInt("totalAttempts", totalAttempts);
 
-        editor.putBoolean("answeredQuestion", answeredQuestion);
+        editor.putInt("pastGameOneCorrectAnswers", pastGameOneCorrectAnswers);
+        editor.putInt("pastGameOneIncorrectAnswers", pastGameOneIncorrectAnswers);
 
+        editor.putInt("pastGameTwoCorrectAnswers", pastGameTwoCorrectAnswers);
+        editor.putInt("pastGameTwoIncorrectAnswers", pastGameTwoIncorrectAnswers);
 
         editor.commit();
     }
@@ -624,6 +669,10 @@ public class GameActivity extends AppCompatActivity {
         Log.d("ATTEMPTS", String.valueOf(totalAttempts));
 
         i.putExtra("totalAttempts", totalAttempts);
+        i.putExtra("pastGameOneCorrectAnswers", pastGameOneCorrectAnswers);
+        i.putExtra("pastGameOneIncorrectAnswers", pastGameOneIncorrectAnswers);
+        i.putExtra("pastGameOneCorrectAnswers", pastGameOneCorrectAnswers);
+        i.putExtra("pastGameOneIncorrectAnswers", pastGameOneIncorrectAnswers);
 
         startActivity(i);
     }
