@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_main);
 
         // TODO: Emit LogCat message
         Log.i(METHOD_TAG, "Entered the onStart() method");

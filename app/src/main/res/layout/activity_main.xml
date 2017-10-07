@@ -132,7 +132,7 @@
             android:gravity="center"
             android:text="@string/question_1_righLaneAhead"
             android:textColor="@color/colorWhite"
-            android:textSize="26sp" />
+            android:textSize="18sp" />
 
 
     </LinearLayout>
@@ -140,8 +140,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.19"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
 
         <Button
             android:id="@+id/playAgainButton"
@@ -159,6 +159,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:onClick="nextButton"
             android:text="@string/next"
@@ -171,17 +172,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:padding="10dp"
-        android:weightSum="1">
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/aboutButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/border"
+            android:onClick="launchAboutActivity"
+            android:text="@string/aboutButtonHint"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/hintButton"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/border"
             android:onClick="showHint"
             android:text="@string/hint"
-            android:textSize="18sp"
-            android:background="@drawable/border"/>
+            android:textSize="18sp" />
 
     </LinearLayout>
 
