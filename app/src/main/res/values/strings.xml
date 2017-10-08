@@ -13,7 +13,7 @@
 
     <string name="hint">Hint</string>
     <string name="next">Next</string>
-    <string name="playagain">"Play Again?"</string>
+    <string name="playagain">Play Again</string>
     <string name="question_0_WindroadAhead">Winding road ahead</string>
     <string name="question_0_hint">The road curves a lot.</string>
     <string name="question_1_righLaneAhead">Right lane ends ahead</string>
@@ -46,9 +46,10 @@
     <string name="question_14_hint">Two lanes become one.</string>
     <string name="hint_prefix">road sign</string>
 
-    <string name="correct">Correct!</string>
+    <string name="questions">Questions:</string>
+    <string name="correct">Correct:</string>
     <string name="correct_finish">Correct! Test Finished!</string>
-    <string name="wrong">Wrong!</string>
+    <string name="wrong">Wrong:</string>
     <string name="wrong_tryagain">Wrong! Try One More Time!</string>
     <string name="wrong_finished">Wrong! Test Finished</string>
 

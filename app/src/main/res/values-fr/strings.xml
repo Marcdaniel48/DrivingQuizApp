@@ -9,7 +9,7 @@
     <string name="next">Suivant</string>
     <string name="pastScoresTextViewHint">-Résultats des tentatives de quiz précédentes vont ici-</string>
     <string name="playQuizButtonHint">Jouer Le Quiz</string>
-    <string name="playagain">\"Rejouer?\"</string>
+    <string name="playagain">Rejouer</string>
     <string name="question_0_WindroadAhead">Proximité d\'une ou plusieurs courbes sur un chemin public</string>
     <string name="question_10_Stop_Sign_ahead">Proximité d\'un panneau d\'arrêt</string>
     <string name="question_11_School_Bus_ahead">Proximité d\'un autobus scolaire immobilisé</string>
@@ -43,10 +43,11 @@
     <string name="aboutButtonHint">À propos</string>
     <string name="creditsHeader"><b>Crédits</b></string>
     <string name="attemptsString">Nombre de tentatives totales de quiz</string>
-    <string name="correct">Bonne Réponse!</string>
+    <string name="correct">Bonnes réponses:</string>
     <string name="correct_finish">Bonne Réponse! Le test est terminé</string>
     <string name="hint_prefix">panneau de signalisation</string>
-    <string name="wrong">Mauvaise réponse!</string>
+    <string name="wrong">Mauvaises réponses:</string>
     <string name="wrong_finished">Mauvaise réponse! Le test est terminé</string>
     <string name="wrong_tryagain">Mauvaise réponse! Essayez encore une fois</string>
+    <string name="questions">Questions:</string>
 </resources>

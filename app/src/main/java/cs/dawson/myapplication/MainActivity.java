@@ -166,8 +166,9 @@ public class MainActivity extends AppCompatActivity {
             imageButton3.setImageResource(button3ImageRes);
             imageButton4.setImageResource(button4ImageRes);
             questionSentenceTextView.setText(question);
-            progressTextView.setText("Questions: " + Integer.toString(questions) + "/" + Integer.toString(4));
-            correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
+            correctIncorrectTextView.setText(getResources().getString(R.string.correct) + " " + Integer.toString(correctAnswers) + " " + getResources().getString(R.string.wrong)
+                    + " " + Integer.toString(incorrectAnswers));
+            progressTextView.setText(getResources().getString(R.string.questions) + " " + Integer.toString(questions) + "/" + Integer.toString(4));
 
             if(disableNextButton)
                 nextButton.setEnabled(false);
@@ -238,8 +239,9 @@ public class MainActivity extends AppCompatActivity {
 
             questionSentenceTextView.setText(question);
 
-            correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
-            progressTextView.setText("Questions: " + Integer.toString(questions) + "/" + Integer.toString(4));
+            correctIncorrectTextView.setText(getResources().getString(R.string.correct) + " " + Integer.toString(correctAnswers) + " " + getResources().getString(R.string.wrong)
+                    + " " + Integer.toString(incorrectAnswers));
+            progressTextView.setText(getResources().getString(R.string.questions) + " " + Integer.toString(questions) + "/" + Integer.toString(4));
 
             if(disableImageButtons)
                 disableButtons();
@@ -281,8 +283,9 @@ public class MainActivity extends AppCompatActivity {
         disableButtons();
 
         //progressTextView.setBackground(null);
-        progressTextView.setText("Questions: " + Integer.toString(questions) + "/" + Integer.toString(4));
-        correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
+        correctIncorrectTextView.setText(getResources().getString(R.string.correct) + " " + Integer.toString(correctAnswers) + " " + getResources().getString(R.string.wrong)
+                + " " + Integer.toString(incorrectAnswers));
+        progressTextView.setText(getResources().getString(R.string.questions) + " " + Integer.toString(questions) + "/" + Integer.toString(4));
 
         questionsAsked.clear();
 
@@ -310,8 +313,9 @@ public class MainActivity extends AppCompatActivity {
         // TODO: Emit LogCat message
         Log.i(METHOD_TAG, "createNextQuestion() method Invoked");
 
-        progressTextView.setText("Questions: " + Integer.toString(questions) + "/" + Integer.toString(4));
-        correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
+        correctIncorrectTextView.setText(getResources().getString(R.string.correct) + " " + Integer.toString(correctAnswers) + " " + getResources().getString(R.string.wrong)
+                + " " + Integer.toString(incorrectAnswers));
+        progressTextView.setText(getResources().getString(R.string.questions) + " " + Integer.toString(questions) + "/" + Integer.toString(4));
 
         chances = 0;
         questions++;
@@ -485,8 +489,9 @@ public class MainActivity extends AppCompatActivity {
             //boolean to be saved in the bundle to keep track of disabled buttons
             disableImageButtons = true;
             disableButtons();
-            correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
-            progressTextView.setText("Questions: " + Integer.toString(questions) + "/" + Integer.toString(4));
+            correctIncorrectTextView.setText(getResources().getString(R.string.correct) + " " + Integer.toString(correctAnswers) + " " + getResources().getString(R.string.wrong)
+                    + " " + Integer.toString(incorrectAnswers));
+            progressTextView.setText(getResources().getString(R.string.questions) + " " + Integer.toString(questions) + "/" + Integer.toString(4));
 
             //if questions is greater than or equal to 4 game finished with a correct answer
             if(questions >= 4)
@@ -577,8 +582,9 @@ public class MainActivity extends AppCompatActivity {
                 incorrectAnswers++;
                 disableImageButtons = true;
                 disableButtons();
-                correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
-                progressTextView.setText("Questions: " + Integer.toString(questions) + "/" + Integer.toString(4));
+                correctIncorrectTextView.setText(getResources().getString(R.string.correct) + " " + Integer.toString(correctAnswers) + " " + getResources().getString(R.string.wrong)
+                        + " " + Integer.toString(incorrectAnswers));
+                progressTextView.setText(getResources().getString(R.string.questions) + " " + Integer.toString(questions) + "/" + Integer.toString(4));
 
                 //if questions is greater than or equal to 4 game finished.
                 if(questions >= 4)
@@ -638,8 +644,9 @@ public class MainActivity extends AppCompatActivity {
 
                     disableNextButton = false;
                     nextButton.setEnabled(true);
-                    correctIncorrectTextView.setText("Correct: " + Integer.toString(correctAnswers) + " Incorrect: " + Integer.toString(incorrectAnswers));
-                    progressTextView.setText("Questions: " + Integer.toString(questions) + "/" + Integer.toString(4));
+                    correctIncorrectTextView.setText(getResources().getString(R.string.correct) + " " + Integer.toString(correctAnswers) + " " + getResources().getString(R.string.wrong)
+                            + " " + Integer.toString(incorrectAnswers));
+                    progressTextView.setText(getResources().getString(R.string.questions) + " " + Integer.toString(questions) + "/" + Integer.toString(4));
                 }
             }
             else
