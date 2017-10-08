@@ -18,21 +18,4 @@
         <item>@string/question_13_reverse_curve_ahead</item>
         <item>@string/question_14_traffic_merges_lane</item>
     </string-array>
-    <string-array name="hint_array">
-        <item>@string/question_0_hint</item>
-        <item>@string/question_1_hint</item>
-        <item>@string/question_2_hint</item>
-        <item>@string/question_3_hint</item>
-        <item>@string/question_4_hint</item>
-        <item>@string/question_5_hint</item>
-        <item>@string/question_6_hint</item>
-        <item>@string/question_7_hint</item>
-        <item>@string/question_8_hint</item>
-        <item>@string/question_9_hint</item>
-        <item>@string/question_10_hint</item>
-        <item>@string/question_11_hint</item>
-        <item>@string/question_12_hint</item>
-        <item>@string/question_13_hint</item>
-        <item>@string/question_14_hint</item>
-    </string-array>
 </resources>
