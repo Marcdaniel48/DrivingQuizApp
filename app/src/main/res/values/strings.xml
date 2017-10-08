@@ -44,14 +44,14 @@
     <string name="question_13_hint">The road curves left</string>
     <string name="question_14_traffic_merges_lane">"Traffic may merges into the lane"</string>
     <string name="question_14_hint">Two lanes become one.</string>
-    <string name="hint_string"></string>
+    <string name="hint_prefix">road sign</string>
 
     <string name="correct">Correct!</string>
-    <string name="correct_finish">Correct!Test Finished!</string>
+    <string name="correct_finish">Correct! Test Finished!</string>
     <string name="wrong">Wrong!</string>
     <string name="wrong_tryagain">Wrong! Try One More Time!</string>
     <string name="wrong_finished">Wrong! Test Finished</string>
 
-    <string name="attemptsString">Number of total attempts: </string>
+    <string name="attemptsString">"Number of total quiz attempts: "</string>
 
 </resources>

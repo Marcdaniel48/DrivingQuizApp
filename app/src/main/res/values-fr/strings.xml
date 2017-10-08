@@ -42,4 +42,11 @@
     <string name="question_9_hint">Inondation</string>
     <string name="aboutButtonHint">À propos</string>
     <string name="creditsHeader"><b>Crédits</b></string>
+    <string name="attemptsString">Nombre de tentatives totales de quiz</string>
+    <string name="correct">Bonne Réponse!</string>
+    <string name="correct_finish">Bonne Réponse! Le test est terminé</string>
+    <string name="hint_prefix">panneau de signalisation</string>
+    <string name="wrong">Mauvaise réponse!</string>
+    <string name="wrong_finished">Mauvaise réponse! Le test est terminé</string>
+    <string name="wrong_tryagain">Mauvaise réponse! Essayez encore une fois</string>
 </resources>
