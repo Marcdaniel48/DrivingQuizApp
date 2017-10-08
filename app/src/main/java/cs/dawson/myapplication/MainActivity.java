@@ -132,8 +132,10 @@ public class MainActivity extends AppCompatActivity {
         questionSentenceTextView = (TextView)findViewById(R.id.questionTextView);
         correctIncorrectTextView = (TextView)findViewById(R.id.scoreTextView);
 
+        Log.d("DISABLE_B4_CREATENEXT", String.valueOf(disableImageButtons));
         // Generate a question
         createNextQuestion();
+        Log.d("DISABLE_AFTER_CREATE", String.valueOf(disableImageButtons));
 
         // Everything under here is SharedPreferences and savedInstanceState getting and loading
 
@@ -174,6 +176,8 @@ public class MainActivity extends AppCompatActivity {
                 nextButton.setEnabled(false);
             else
                 nextButton.setEnabled(true);
+
+            Log.d("DISABLE_IMGBTN_SHARED", String.valueOf(disableImageButtons));
 
             if(disablePlayAgainButton)
                 playAgainButton.setEnabled(false);
@@ -247,6 +251,8 @@ public class MainActivity extends AppCompatActivity {
                 disableButtons();
             else
                 enableButtons();
+
+            Log.d("DISABLE_IMGBTN_INSTANCE", String.valueOf(disableImageButtons));
 
             if(disableNextButton)
                 nextButton.setEnabled(false);
@@ -329,6 +335,7 @@ public class MainActivity extends AppCompatActivity {
         answerResult = "";
         answerResultTextView.setText(answerResult);
 
+        disableImageButtons = false;
         enableButtons();
 
         answers.clear();
@@ -435,7 +442,6 @@ public class MainActivity extends AppCompatActivity {
      * the main Image Buttons of the Game
      */
     public void enableButtons(){
-
         imageButton1.setEnabled(true);
         imageButton2.setEnabled(true);
         imageButton3.setEnabled(true);
@@ -695,6 +701,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putInt("questionsPos", questionPos);
         editor.putInt("chances", chances);
 
+        Log.d("DISABLE_ONPAUSE", String.valueOf(disableImageButtons));
         editor.putBoolean("disableImageButtons", disableImageButtons);
         editor.putBoolean("disableNextButton", disableNextButton);
         editor.putBoolean("disablePlayAgainButton", disablePlayAgainButton);
