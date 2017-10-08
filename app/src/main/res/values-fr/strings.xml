@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">assign1-team02</string>
-    <string name="creditsTextViewHint">Cette application de quiz de conduite a été créée par Daniel et Marc.</string>
+    <string name="app_name">DQDanielMarc</string>
+    <string name="creditsTextViewHint">Cette application de quiz de conduite a été créée par Daniel et Marc-Daniel.</string>
     <string name="hint">Indice</string>
     <string name="howToPlayHeader"><b>Comment Jouer</b></string>
     <string name="howToPlayTextViewHint">Le but de cette application est de fournir un quiz interactif de conduite. Lorsque le quiz commence, 4 images différents et une courte phrase, décrivant une de ces images, apparaîtront. Le but est de trouver à quelle image cette phrase réfère à, en cliquant\nsur la photo correcte.</string>
     <string name="pastScoresHeader"><b>Résultats passés</b></string>
     <string name="next">Suivant</string>
     <string name="pastScoresTextViewHint">-Résultats des tentatives de quiz précédentes vont ici-</string>
-    <string name="playQuizButtonHint">Jouer Le Quiz</string>
-    <string name="playagain">\"Rejouer?\"</string>
+    <string name="playagain">Rejouer</string>
     <string name="question_0_WindroadAhead">Proximité d\'une ou plusieurs courbes sur un chemin public</string>
     <string name="question_10_Stop_Sign_ahead">Proximité d\'un panneau d\'arrêt</string>
     <string name="question_11_School_Bus_ahead">Proximité d\'un autobus scolaire immobilisé</string>
@@ -42,4 +41,15 @@
     <string name="question_9_hint">Inondation</string>
     <string name="aboutButtonHint">À propos</string>
     <string name="creditsHeader"><b>Crédits</b></string>
+    <string name="attemptsString">Nombre de tentatives totales de quiz</string>
+    <string name="correct">Correcte:</string>
+    <string name="correct_finish">Bonne Réponse! Le test est terminé</string>
+    <string name="hint_prefix">panneau de signalisation</string>
+    <string name="wrong">Incorrecte:</string>
+    <string name="wrong_finished">Mauvaise réponse! Le test est terminé</string>
+    <string name="wrong_tryagain">Mauvaise réponse! Essayez encore une fois</string>
+    <string name="questions">Questions:</string>
+    <string name="pastGameOneString">Résultat passé -> Correcte:</string>
+    <string name="pastGameTwoString">Résultat passé le plus récent -> Correct:</string>
+    <string name="pastGamesExtraString">, Incorrecte:</string>
 </resources>

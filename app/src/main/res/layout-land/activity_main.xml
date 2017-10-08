@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#404040"
     android:orientation="vertical"
-    tools:context="cs.dawson.myapplication.GameActivity"
+    tools:context="cs.dawson.myapplication.MainActivity"
     android:weightSum="1"
     android:gravity="center">
 
@@ -14,25 +14,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/progressTextView"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
             android:padding="10dp"
             android:textColor="@color/colorWhite"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/scoreTextView"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
             android:padding="10dp"
             android:textColor="@color/colorWhite"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -47,8 +47,8 @@
             android:layout_height="match_parent"
             android:fontFamily="sans-serif-smallcaps"
             android:gravity="center_horizontal"
-            android:textColor="@android:color/black"
-            android:textSize="32sp" />
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp" />
 
 
     </LinearLayout>
@@ -58,13 +58,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:gravity="center"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/button0"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginRight="10dp"
             android:background="@null"
             android:onClick="chooseAnswer"
@@ -74,28 +73,23 @@
 
         <ImageButton
             android:id="@+id/button1"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@null"
             android:onClick="chooseAnswer"
             android:scaleType="fitXY"
             android:tag="1"
             app:srcCompat="@drawable/pic_3" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
         <ImageButton
             android:id="@+id/button2"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:background="@null"
             android:onClick="chooseAnswer"
             android:scaleType="fitXY"
@@ -104,15 +98,15 @@
 
         <ImageButton
             android:id="@+id/button3"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:background="@null"
             android:onClick="chooseAnswer"
             android:scaleType="fitXY"
             android:tag="3"
             app:srcCompat="@drawable/pic_5" />
-
 
     </LinearLayout>
 
@@ -121,8 +115,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:weightSum="1"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:id="@+id/questionTextView"
@@ -132,7 +126,7 @@
             android:gravity="center"
             android:text="@string/question_1_righLaneAhead"
             android:textColor="@color/colorWhite"
-            android:textSize="30sp" />
+            android:textSize="18sp" />
 
 
     </LinearLayout>
@@ -140,53 +134,54 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.19"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/playAgainButton"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_marginLeft="10dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
+            android:background="@drawable/border"
             android:onClick="playAgain"
             android:text="@string/playagain"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <Button
-            android:id="@+id/nextButton"
+            android:id="@+id/aboutButton"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_marginLeft="10dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:onClick="nextButton"
-            android:text="@string/next"
-            android:textSize="24sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:weightSum="1">
+            android:background="@drawable/border"
+            android:onClick="launchAboutActivity"
+            android:text="@string/aboutButtonHint"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/hintButton"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/border"
             android:onClick="showHint"
             android:text="@string/hint"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/nextButton"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:onClick="launchAboutActivity"
-            android:text="@string/aboutButtonHint" />
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/border"
+            android:onClick="nextButton"
+            android:text="@string/next"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
