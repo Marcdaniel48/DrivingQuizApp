@@ -661,7 +661,7 @@ public class MainActivity extends AppCompatActivity {
         // TODO: Emit LogCat message
         Log.i(METHOD_TAG, "showHint() method Invoked");
 
-        String query = "road sign " + questionSentenceTextView.getText().toString();
+        String query = getResources().getString(R.string.hint_prefix) + " " + questionSentenceTextView.getText().toString();
         Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
         intent.putExtra(SearchManager.QUERY, query);
         startActivity(intent);
