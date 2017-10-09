@@ -465,7 +465,7 @@ public class MainActivity extends AppCompatActivity {
         {
             correctAnswers++;
 
-            answerResult = "Correct!";
+            answerResult = getResources().getString(R.string.correct);;
             answerResultTextView.setTextColor(Color.GREEN);
             answerResultTextView.setText(answerResult);
 
@@ -534,7 +534,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("PAST_GAME_TWO_CORRECT", String.valueOf(pastGameTwoCorrectAnswers));
                 Log.d("PAST_GAME_TWO_INCORRECT", String.valueOf(pastGameTwoIncorrectAnswers));
 
-                answerResult = "Correct! Test Finished!";
+                answerResult = getResources().getString(R.string.correct_finish);
                 answerResultTextView.setText(answerResult);
                 nextButton.setEnabled(false);
                 disableNextButton = true;
@@ -624,7 +624,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("PAST_GAME_TWO_CORRECT", String.valueOf(pastGameTwoCorrectAnswers));
                     Log.d("PAST_GAME_TWO_INCORRECT", String.valueOf(pastGameTwoIncorrectAnswers));
 
-                    answerResult = "Wrong! Test Finished.";
+                    answerResult = getResources().getString(R.string.wrong_finished);
                     answerResultTextView.setText(answerResult);
                     answerResultTextView.setTextColor(Color.RED);
 
@@ -639,7 +639,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Log.i("CHANCES","" + chances);
 
-                    answerResult = "Wrong!";
+                    answerResult = getResources().getString(R.string.wrong);
                     answerResultTextView.setText(answerResult);
                     answerResultTextView.setTextColor(Color.RED);
                     disableImageButtons = true;
@@ -657,7 +657,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else
             {
-                answerResult = "Wrong! Try one more time!";
+                answerResult = getResources().getString(R.string.wrong_tryagain);
                 answerResultTextView.setTextColor(Color.RED);
                 answerResultTextView.setText(answerResult);
                 nextButton.setEnabled(false);
