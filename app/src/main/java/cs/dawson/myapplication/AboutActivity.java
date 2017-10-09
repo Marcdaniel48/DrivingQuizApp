@@ -1,14 +1,8 @@
 package cs.dawson.myapplication;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
-
-/**
- * Created by Marc-Daniel on 2017-09-29.
- */
 
 public class AboutActivity extends Activity {
 
