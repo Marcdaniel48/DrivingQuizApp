@@ -120,7 +120,7 @@
                     android:layout_width="300dp"
                     android:layout_height="360dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/aboutImage" />
+                    android:background="@drawable/about_image" />
             </LinearLayout>
 
         </LinearLayout>
