@@ -107,4 +107,18 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="260dp"
+            android:layout_gravity="center"
+            android:background="@drawable/about_image" />
+    </LinearLayout>
+
 </LinearLayout>

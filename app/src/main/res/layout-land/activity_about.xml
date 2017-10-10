@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="@string/howToPlayHeader"
             android:textColor="@color/textColor"
-            android:textSize="38dp" />
+            android:textSize="24dp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -27,7 +27,7 @@
             android:layout_weight="1"
             android:text="@string/howToPlayTextViewHint"
             android:textColor="@color/textColor"
-            android:textSize="26dp" />
+            android:textSize="16dp" />
 
     </LinearLayout>
 
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/pastScoresHeader"
             android:textColor="@color/textColor"
-            android:textSize="38dp" />
+            android:textSize="24dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/attemptsString"
                 android:textColor="@color/textColor"
-                android:textSize="26sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/numberOfAttempts"
@@ -64,23 +64,24 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textColor="@color/textColor"
-                android:textSize="26sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/resultScore2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textColor"
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/resultScore1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/textColor"
-            android:textSize="26dp" />
-
-        <TextView
-            android:id="@+id/resultScore2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/textColor"
-            android:textSize="26dp" />
+            android:textSize="16dp" />
 
     </LinearLayout>
 
@@ -99,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/creditsHeader"
                 android:textColor="@color/textColor"
-                android:textSize="38dp" />
+                android:textSize="24dp" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -107,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/creditsTextViewHint"
                 android:textColor="@color/textColor"
-                android:textSize="26dp" />
+                android:textSize="16dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -117,8 +118,8 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="300dp"
-                    android:layout_height="360dp"
+                    android:layout_width="200dp"
+                    android:layout_height="260dp"
                     android:layout_gravity="center"
                     android:background="@drawable/about_image" />
             </LinearLayout>
