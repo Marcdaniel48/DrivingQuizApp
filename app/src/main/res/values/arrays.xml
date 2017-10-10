@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="questions_array">
+        <item>@string/question_0_WindroadAhead</item>
+        <item>@string/question_1_righLaneAhead</item>
+        <item>@string/question_2_TAhead</item>
+        <item>@string/question_3_Bumpy_ahead</item>
+        <item>@string/question_4_Traffic_Lights</item>
+        <item>@string/question_5_Children_Crossing</item>
+        <item>@string/question_6_Wild_Animals</item>
+        <item>@string/question_7_Snowmobile</item>
+        <item>@string/question_8_Roundabound_ahead</item>
+        <item>@string/question_9_Water_Road</item>
+        <item>@string/question_10_Stop_Sign_ahead</item>
+        <item>@string/question_11_School_Bus_ahead</item>
+        <item>@string/question_12_Divided_roadway</item>
+        <item>@string/question_13_reverse_curve_ahead</item>
+        <item>@string/question_14_traffic_merges_lane</item>
+    </string-array>
+</resources>
