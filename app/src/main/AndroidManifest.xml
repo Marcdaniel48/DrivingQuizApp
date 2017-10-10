@@ -19,12 +19,9 @@
                 </intent-filter>
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-=======
         <activity android:name=".AboutActivity">
 
         </activity>
->>>>>>> staging
     </application>
 
 </manifest>
