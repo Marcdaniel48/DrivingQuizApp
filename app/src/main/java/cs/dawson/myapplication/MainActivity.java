@@ -398,6 +398,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Save instance bundle
+     * @param outState
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -669,6 +673,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Does a Google search using the current question as the query.
+     * @param v
+     */
     public void showHint(View v)
     {
         // TODO: Emit LogCat message
@@ -720,6 +728,10 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    /**
+     * Launches the 'about' activity
+     * @param v
+     */
     public void launchAboutActivity(View v)
     {
 
