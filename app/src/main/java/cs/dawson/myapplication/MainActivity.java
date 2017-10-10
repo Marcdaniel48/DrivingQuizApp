@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     int questionPos;
 
 
-    // Data that's going to be saved using SharedPreferences and that will appear in the 'about' activity
+    // This is Data that's going to be saved using SharedPreferences and that will appear in the 'about' activity
     int totalAttempts = 0;
     int pastGameOneCorrectAnswers = 0;
     int pastGameOneIncorrectAnswers = 0;
