@@ -7,7 +7,7 @@ import android.widget.TextView;
 public class AboutActivity extends Activity {
 
     TextView numberOfAttemptsTextView, results1TextView, results2TextView;
-
+    //
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
