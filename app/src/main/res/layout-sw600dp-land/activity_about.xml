@@ -117,11 +117,10 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="250dp"
+                    android:layout_width="350dp"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/pic_0"
-                    app:srcCompat="@drawable/pic_0" />
+                    android:background="@drawable/maxresdefault" />
             </LinearLayout>
 
         </LinearLayout>
