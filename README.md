@@ -1,4 +1,4 @@
-# DQDanielMarc
+# DQDanielMarc and Daniel Cavalcanti
 
 App by: Marc-Daniel Dialogo and Daniel Cavalcanti
 
